@@ -1,0 +1,1093 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+  <title>91今日大赛-每日赛程与热门对决_赛事分析_比分速递</title>
+  <meta name="description" content="91今日大赛每日聚合热门赛程、实时比分与深度赛事分析，覆盖电竞、体育、趣味竞技等多元项目。提供赛前前瞻、对阵解析、选手数据与网友热评，帮助您快速锁定今日焦点对决，不错过每一场精彩大赛。">
+  <meta name="keywords" content="91今日大赛,今日赛程,热门对决,赛事分析,比分速递,电竞大赛">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231e2a44'/%3E%3Ctext x='16' y='22' font-size='16' font-family='sans-serif' fill='%23ffc857' text-anchor='middle'%3E91%3C/text%3E%3C/svg%3E">
+  <style>
+    :root {
+      --clr-bg: #f6f7fb;
+      --clr-surface: #ffffff;
+      --clr-primary: #0b1b33;
+      --clr-accent: #ffb347;
+      --clr-accent-deep: #e8941a;
+      --clr-text: #1f2937;
+      --clr-text-soft: #4b5563;
+      --clr-border: #e5e7eb;
+      --clr-tag: #eef2f6;
+      --radius-card: 18px;
+      --radius-badge: 8px;
+      --shadow-card: 0 8px 20px rgba(0, 0, 0, 0.04), 0 2px 6px rgba(0, 0, 0, 0.02);
+      --shadow-hover: 0 16px 30px rgba(0, 0, 0, 0.08);
+      --font-stack: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      --max-width: 1200px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: var(--font-stack);
+      background: var(--clr-bg);
+      color: var(--clr-text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* ------ 导航 ------ */
+    .navbar {
+      background: var(--clr-surface);
+      border-bottom: 1px solid var(--clr-border);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(6px);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .logo-badge {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 700;
+      font-size: 1.4rem;
+      letter-spacing: -0.5px;
+      background: var(--clr-primary);
+      color: #fff;
+      padding: 4px 14px;
+      border-radius: 40px;
+    }
+
+    .logo-badge span {
+      color: var(--clr-accent);
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px 20px;
+      font-size: 0.95rem;
+      color: var(--clr-text-soft);
+    }
+
+    .nav-links a {
+      padding: 6px 0;
+      border-bottom: 2px solid transparent;
+      transition: border-color 0.15s;
+    }
+
+    .nav-links a:hover {
+      border-bottom-color: var(--clr-accent);
+      color: var(--clr-primary);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .btn-outline {
+      border: 1px solid var(--clr-border);
+      background: #fff;
+      padding: 8px 18px;
+      border-radius: 40px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--clr-text);
+      transition: all 0.15s;
+    }
+
+    .btn-outline:hover {
+      background: var(--clr-primary);
+      border-color: var(--clr-primary);
+      color: #fff;
+    }
+
+    /* ------ Banner 区域 ------ */
+    .hero {
+      background: linear-gradient(145deg, #0f1c2e 0%, #1d2b3f 100%);
+      color: #fff;
+      padding: 52px 0 44px;
+      margin-bottom: 36px;
+      border-radius: 0 0 32px 32px;
+    }
+
+    .hero-content {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      max-width: 800px;
+    }
+
+    .hero h1 {
+      font-size: 2.8rem;
+      font-weight: 700;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+    }
+
+    .hero h1 span {
+      color: var(--clr-accent);
+      background: rgba(255, 180, 71, 0.12);
+      padding: 0 8px;
+      border-radius: 8px;
+    }
+
+    .hero-desc {
+      font-size: 1.1rem;
+      color: #ccd9e9;
+      max-width: 640px;
+      line-height: 1.7;
+    }
+
+    .search-row {
+      display: flex;
+      background: #fff;
+      border-radius: 60px;
+      padding: 4px;
+      max-width: 560px;
+      margin: 8px 0 6px;
+    }
+
+    .search-row input {
+      flex: 1;
+      border: none;
+      background: transparent;
+      padding: 12px 20px;
+      font-size: 1rem;
+      border-radius: 60px;
+      outline: none;
+      color: #1f2937;
+    }
+
+    .search-row button {
+      background: var(--clr-accent);
+      border: none;
+      padding: 12px 28px;
+      border-radius: 60px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: #1f2937;
+      cursor: default;
+      transition: background 0.15s;
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 8px;
+    }
+
+    .hero-tags a {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      padding: 8px 18px;
+      border-radius: 30px;
+      font-size: 0.9rem;
+      color: #e2e8f0;
+      transition: background 0.15s;
+    }
+
+    .hero-tags a:hover {
+      background: var(--clr-accent);
+      color: #0f1c2e;
+      border-color: var(--clr-accent);
+    }
+
+    /* ------ 板块通用 ------ */
+    .section {
+      margin-bottom: 52px;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .section-title {
+      font-size: 1.8rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--clr-primary);
+    }
+
+    .section-sub {
+      color: var(--clr-text-soft);
+      font-size: 0.95rem;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 22px;
+    }
+
+    .card {
+      background: var(--clr-surface);
+      border-radius: var(--radius-card);
+      padding: 20px 18px 18px;
+      box-shadow: var(--shadow-card);
+      transition: transform 0.2s, box-shadow 0.2s;
+      border: 1px solid rgba(0, 0, 0, 0.02);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .card-tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+      text-transform: uppercase;
+      background: var(--clr-tag);
+      padding: 4px 10px;
+      border-radius: 20px;
+      color: var(--clr-primary);
+      margin-bottom: 12px;
+      align-self: flex-start;
+    }
+
+    .card-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      line-height: 1.35;
+    }
+
+    .card-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      font-size: 0.8rem;
+      color: var(--clr-text-soft);
+      margin: 10px 0 8px;
+    }
+
+    .card-desc {
+      font-size: 0.9rem;
+      color: #374151;
+      line-height: 1.6;
+      margin-bottom: 4px;
+      flex: 1;
+    }
+
+    .card-footer {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.8rem;
+      color: #6b7280;
+      margin-top: 12px;
+      border-top: 1px solid var(--clr-border);
+      padding-top: 10px;
+    }
+
+    .hot-badge {
+      background: #fee2e2;
+      color: #b91c1c;
+      padding: 2px 8px;
+      border-radius: 30px;
+      font-weight: 600;
+    }
+
+    /* 更新列表 */
+    .update-list {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .update-item {
+      background: var(--clr-surface);
+      border-radius: 16px;
+      padding: 16px 22px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      box-shadow: var(--shadow-card);
+      border-left: 6px solid var(--clr-accent);
+    }
+
+    .update-item .name {
+      font-weight: 600;
+      font-size: 1.05rem;
+    }
+
+    .update-item .time {
+      font-size: 0.8rem;
+      color: var(--clr-text-soft);
+      background: var(--clr-tag);
+      padding: 4px 12px;
+      border-radius: 30px;
+    }
+
+    .update-item .brief {
+      color: var(--clr-text-soft);
+      font-size: 0.9rem;
+      flex: 1 1 200px;
+    }
+
+    /* 分类入口 */
+    .category-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .chip {
+      background: var(--clr-surface);
+      padding: 10px 24px;
+      border-radius: 40px;
+      box-shadow: var(--shadow-card);
+      font-weight: 500;
+      font-size: 0.95rem;
+      color: var(--clr-primary);
+      transition: all 0.15s;
+      border: 1px solid transparent;
+    }
+
+    .chip:hover {
+      background: var(--clr-primary);
+      color: #fff;
+      border-color: var(--clr-primary);
+      transform: scale(1.02);
+    }
+
+    /* 长文解析 */
+    .analysis-box {
+      background: var(--clr-surface);
+      border-radius: 24px;
+      padding: 32px 36px;
+      box-shadow: var(--shadow-card);
+      font-size: 1rem;
+      color: #2d3a4b;
+      line-height: 1.8;
+    }
+
+    .analysis-box h3 {
+      font-size: 1.35rem;
+      margin: 24px 0 12px;
+      color: var(--clr-primary);
+    }
+
+    .analysis-box p {
+      margin-bottom: 16px;
+    }
+
+    /* FAQ 双栏 */
+    .faq-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .faq-item {
+      background: var(--clr-surface);
+      border-radius: 18px;
+      padding: 20px 22px;
+      box-shadow: var(--shadow-card);
+    }
+
+    .faq-q {
+      font-weight: 700;
+      font-size: 1.05rem;
+      margin-bottom: 8px;
+      color: var(--clr-primary);
+      display: flex;
+      gap: 8px;
+    }
+
+    .faq-q::before {
+      content: "Q";
+      color: var(--clr-accent-deep);
+      font-weight: 800;
+    }
+
+    .faq-a {
+      color: var(--clr-text-soft);
+      font-size: 0.92rem;
+      padding-left: 20px;
+    }
+
+    /* 评论 */
+    .comment-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .comment-item {
+      background: var(--clr-surface);
+      border-radius: 16px;
+      padding: 16px 20px;
+      box-shadow: var(--shadow-card);
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+
+    .avatar {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #ddd6fe, #c4b5fd);
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      color: #4c1d95;
+      font-size: 1rem;
+    }
+
+    .comment-body {
+      flex: 1;
+    }
+
+    .comment-head {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      margin-bottom: 4px;
+    }
+
+    .comment-name {
+      font-weight: 600;
+      font-size: 0.92rem;
+    }
+
+    .comment-date {
+      font-size: 0.75rem;
+      color: #9ca3af;
+    }
+
+    .comment-text {
+      font-size: 0.92rem;
+      color: #374151;
+    }
+
+    /* 资讯卡片 */
+    .news-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    .news-card {
+      background: var(--clr-surface);
+      border-radius: 18px;
+      padding: 22px;
+      box-shadow: var(--shadow-card);
+      transition: all 0.2s;
+      border: 1px solid rgba(0, 0, 0, 0.02);
+    }
+
+    .news-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .news-date {
+      font-size: 0.75rem;
+      color: #9ca3af;
+      margin-bottom: 8px;
+    }
+
+    .news-title {
+      font-weight: 700;
+      font-size: 1.1rem;
+      margin-bottom: 8px;
+      color: var(--clr-primary);
+    }
+
+    .news-summary {
+      font-size: 0.9rem;
+      color: var(--clr-text-soft);
+      line-height: 1.6;
+    }
+
+    /* 页脚 */
+    .footer {
+      background: #0f1c2e;
+      color: #b9c7da;
+      padding: 44px 0 28px;
+      margin-top: 30px;
+      border-radius: 32px 32px 0 0;
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 28px;
+    }
+
+    .footer-brand {
+      font-weight: 700;
+      font-size: 1.4rem;
+      color: #fff;
+      margin-bottom: 10px;
+    }
+
+    .footer-brand span {
+      color: var(--clr-accent);
+    }
+
+    .footer-copy {
+      font-size: 0.8rem;
+      line-height: 1.8;
+      max-width: 380px;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px 30px;
+      font-size: 0.85rem;
+    }
+
+    .footer-links a {
+      color: #b9c7da;
+      transition: color 0.15s;
+    }
+
+    .footer-links a:hover {
+      color: var(--clr-accent);
+    }
+
+    .footer-disclaimer {
+      border-top: 1px solid #2a3a4f;
+      margin-top: 30px;
+      padding-top: 20px;
+      font-size: 0.75rem;
+      color: #7e8b9c;
+      text-align: center;
+    }
+
+    /* 响应式 */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      .nav-inner {
+        height: auto;
+        padding: 12px 0;
+      }
+
+      .nav-links {
+        font-size: 0.85rem;
+        gap: 6px 12px;
+      }
+
+      .faq-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .analysis-box {
+        padding: 24px 20px;
+      }
+
+      .update-item {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .card-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding: 32px 0 28px;
+      }
+
+      .hero h1 {
+        font-size: 1.6rem;
+      }
+
+      .search-row {
+        flex-direction: column;
+        background: transparent;
+        gap: 8px;
+      }
+
+      .search-row input,
+      .search-row button {
+        width: 100%;
+        border-radius: 40px;
+        border: 1px solid #d1d5db;
+      }
+    }
+  </style>
+  <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+  <!-- 导航 -->
+  <header class="navbar">
+    <div class="container nav-inner">
+      <div class="logo-badge">91<span>今日大赛</span></div>
+      <nav class="nav-links">
+        <a href="/#hot-match">热门对决</a>
+        <a href="/#latest-update">最新战报</a>
+        <a href="/#schedule">今日赛程</a>
+        <a href="/#analysis">深度解析</a>
+        <a href="/#faq">常见问题</a>
+        <a href="/#comments">社区热评</a>
+      </nav>
+      <div class="nav-actions">
+        <a href="/#subscribe" class="btn-outline">订阅赛程</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Banner -->
+  <section class="hero">
+    <div class="container hero-content">
+      <h1>91今日大赛 · 每日焦点对决<span>一站聚合</span></h1>
+      <p class="hero-desc">多项目赛程速览、实时战报与深度分析，覆盖电竞、体育、趣味竞技。无论你是硬核观众还是休闲看客，这里都有你关心的今日大赛。</p>
+      <div class="search-row">
+        <input type="text" placeholder="搜索队伍、选手或赛事名称…" aria-label="搜索赛事">
+        <button>搜索</button>
+      </div>
+      <div class="hero-tags">
+        <a href="/#hot-match">英雄联盟</a>
+        <a href="/#hot-match">NBA常规赛</a>
+        <a href="/#hot-match">CS2 Major</a>
+        <a href="/#hot-match">足球友谊赛</a>
+        <a href="/#hot-match">拳皇15</a>
+        <a href="/#hot-match">街霸6</a>
+        <a href="/#hot-match">DOTA2</a>
+        <a href="/#hot-match">趣味竞技</a>
+        <a href="/#hot-match">乒乓球</a>
+        <a href="/#hot-match">田径大奖赛</a>
+      </div>
+    </div>
+  </section>
+
+  <main class="container">
+    <!-- 热门内容推荐 -->
+    <section id="hot-match" class="section">
+      <div class="section-header">
+        <h2 class="section-title">🔥 今日热门对决</h2>
+        <span class="section-sub">编辑精选 · 实时热度</span>
+      </div>
+      <div class="card-grid">
+        <div class="card">
+          <span class="card-tag">电竞 · 英雄联盟</span>
+          <div class="card-title">JDG vs BLG 巅峰对决</div>
+          <div class="card-meta"><span>LPL 春季赛</span><span>🔥 98.2万热度</span></div>
+          <div class="card-desc">两队近期状态火热，中野对抗与下路团战将决定走向。赛前数据面板显示JDG场均经济领先+2.3k，BLG小龙控制率更高。</div>
+          <div class="card-footer"><span>19:00 开赛</span><span class="hot-badge">推荐</span></div>
+        </div>
+        <div class="card">
+          <span class="card-tag">篮球 · NBA</span>
+          <div class="card-title">湖人 vs 勇士 赛季三番战</div>
+          <div class="card-meta"><span>常规赛</span><span>🔥 85.4万热度</span></div>
+          <div class="card-desc">库里与戴维斯的对位看点十足，双方近5场三分命中率均超38%。湖人内线优势明显，勇士需靠转换进攻拉开空间。</div>
+          <div class="card-footer"><span>10:30 开赛</span><span class="hot-badge">焦点</span></div>
+        </div>
+        <div class="card">
+          <span class="card-tag">FPS · CS2</span>
+          <div class="card-title">FaZe vs Vitality 强强对话</div>
+          <div class="card-meta"><span>BLAST 春季决赛</span><span>🔥 72.1万热度</span></div>
+          <div class="card-desc">ZywOo与ropz的狙击对位成为胜负手。地图池方面FaZe在Ancient胜率高达83%，Vitality则更擅长Nuke。</div>
+          <div class="card-footer"><span>22:00 开赛</span><span class="hot-badge">必看</span></div>
+        </div>
+        <div class="card">
+          <span class="card-tag">格斗 · 街霸6</span>
+          <div class="card-title">小孩 vs 东大 抢三复仇战</div>
+          <div class="card-meta"><span>CPT 白金赛</span><span>🔥 56.7万热度</span></div>
+          <div class="card-desc">上次交手小孩2-3惜败，本次胜者组相遇。肯与JP的对局关键在版边压制效率，小孩近期特训了反崩连段。</div>
+          <div class="card-footer"><span>20:30 开赛</span><span class="hot-badge">复仇局</span></div>
+        </div>
+        <div class="card">
+          <span class="card-tag">足球 · 友谊赛</span>
+          <div class="card-title">阿根廷 vs 巴西 南美超级德比</div>
+          <div class="card-meta"><span>国际友谊赛</span><span>🔥 91.3万热度</span></div>
+          <div class="card-desc">梅西领衔出战，巴西新星恩德里克首发呼声极高。双方近4次交手总进球均超过3球，中场绞杀与边路突破是看点。</div>
+          <div class="card-footer"><span>08:00 开赛</span><span class="hot-badge">经典</span></div>
+        </div>
+        <div class="card">
+          <span class="card-tag">MOBA · DOTA2</span>
+          <div class="card-title">LGD vs Tundra 利雅得大师赛</div>
+          <div class="card-meta"><span>小组赛</span><span>🔥 48.5万热度</span></div>
+          <div class="card-desc">Tundra的推进体系遇上LGD的后期团战阵容，BP阶段将决定比赛节奏。Maybe的蓝猫能否在中期带起节奏值得关注。</div>
+          <div class="card-footer"><span>23:00 开赛</span><span class="hot-badge">推荐</span></div>
+        </div>
+        <div class="card">
+          <span class="card-tag">格斗 · 拳皇15</span>
+          <div class="card-title">ET vs 曾卓君 拳皇邀请赛</div>
+          <div class="card-meta"><span>SNK官方邀请赛</span><span>🔥 33.2万热度</span></div>
+          <div class="card-desc">两位老将的宿命对决，ET的七枷社与小孩的伊丝拉都是招牌角色。抢五赛制更考验心态与角色池深度。</div>
+          <div class="card-footer"><span>21:15 开赛</span><span class="hot-badge">情怀</span></div>
+        </div>
+        <div class="card">
+          <span class="card-tag">乒乓 · WTT</span>
+          <div class="card-title">樊振东 vs 王楚钦 男单半决赛</div>
+          <div class="card-meta"><span>WTT 冠军赛</span><span>🔥 64.8万热度</span></div>
+          <div class="card-desc">国乒内战永远不缺话题，双方交手记录樊振东12胜10负略占优。近期王楚钦反手拧拉得分率提升明显。</div>
+          <div class="card-footer"><span>14:00 开赛</span><span class="hot-badge">内战</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 最新更新 / 热播动态 -->
+    <section id="latest-update" class="section">
+      <div class="section-header">
+        <h2 class="section-title">📢 最新赛程与动态</h2>
+        <span class="section-sub">2026年11月7日 更新</span>
+      </div>
+      <div class="update-list">
+        <div class="update-item">
+          <span class="name">JDG vs BLG · LPL春季赛</span>
+          <span class="brief">首发名单公布，JDG打野Kanavi回归首发</span>
+          <span class="time">11月7日 14:20</span>
+        </div>
+        <div class="update-item">
+          <span class="name">湖人 vs 勇士 · NBA常规赛</span>
+          <span class="brief">赛前伤病报告：维金斯出战成疑，八村塁大概率出战</span>
+          <span class="time">11月7日 13:45</span>
+        </div>
+        <div class="update-item">
+          <span class="name">FaZe vs Vitality · BLAST</span>
+          <span class="brief">地图池公布：Ancient、Nuke、Inferno</span>
+          <span class="time">11月7日 12:10</span>
+        </div>
+        <div class="update-item">
+          <span class="name">小孩 vs 东大 · CPT白金赛</span>
+          <span class="brief">小孩赛前采访：这次准备了新的连段路线</span>
+          <span class="time">11月7日 11:30</span>
+        </div>
+        <div class="update-item">
+          <span class="name">阿根廷 vs 巴西 · 友谊赛</span>
+          <span class="brief">官方首发泄露：梅西、劳塔罗领衔锋线</span>
+          <span class="time">11月7日 10:50</span>
+        </div>
+        <div class="update-item">
+          <span class="name">LGD vs Tundra · 利雅得大师赛</span>
+          <span class="brief">LGD官博发布赛前海报，Maybe放话“不留遗憾”</span>
+          <span class="time">11月7日 09:40</span>
+        </div>
+        <div class="update-item">
+          <span class="name">樊振东 vs 王楚钦 · WTT</span>
+          <span class="brief">抽签结果出炉，下半区死亡半区形成</span>
+          <span class="time">11月7日 09:05</span>
+        </div>
+        <div class="update-item">
+          <span class="name">ET vs 曾卓君 · 拳皇邀请赛</span>
+          <span class="brief">赛事方公布赛制：抢五，败者选图</span>
+          <span class="time">11月7日 08:30</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 分类入口 -->
+    <section id="category" class="section">
+      <div class="section-header">
+        <h2 class="section-title">🎯 按分类浏览</h2>
+        <span class="section-sub">快速定位你关注的赛事类型</span>
+      </div>
+      <div class="category-chips">
+        <a class="chip" href="/#hot-match">英雄联盟</a>
+        <a class="chip" href="/#hot-match">DOTA2</a>
+        <a class="chip" href="/#hot-match">CS2</a>
+        <a class="chip" href="/#hot-match">NBA</a>
+        <a class="chip" href="/#hot-match">足球</a>
+        <a class="chip" href="/#hot-match">格斗游戏</a>
+        <a class="chip" href="/#hot-match">乒乓球</a>
+        <a class="chip" href="/#hot-match">田径</a>
+      </div>
+    </section>
+
+    <!-- 深度解析正文 -->
+    <section id="analysis" class="section">
+      <div class="section-header">
+        <h2 class="section-title">📝 深度解析：91今日大赛的看点与脉络</h2>
+      </div>
+      <div class="analysis-box">
+        <p>每天打开“91今日大赛”的赛程页面，你看到的远不止一串时间表。从早间的南美足球德比，到午后的乒乓球内战，再到晚间的电竞焦点战，一天之内横跨多个项目的赛事密度，正是这个聚合页面的核心价值。今天（2026年11月7日）的赛程尤其典型：阿根廷与巴西的友谊赛在早上8点开球，WTT男单半决赛下午2点挥拍，而英雄联盟LPL春季赛的JDG对阵BLG则在晚上7点压轴登场。对于既看足球又追电竞的观众来说，这种跨项目的时间线安排能让你提前规划好观赛节奏，不至于在多个屏幕之间手忙脚乱。</p>
+        <p>那么，“91今日大赛”到底适合谁？简单来说，三类人群最容易从中获益。第一类是重度赛事观众，他们需要一站式查看今日所有重要比赛，并且希望看到赛前数据、首发名单和胜负预测。第二类是休闲用户，他们可能只关心某一场焦点战，比如湖人勇士的NBA常规赛，或者FaZe与Vitality的CS2对决，页面中的“热门对决”卡片能帮他们快速锁定值得看的场次。第三类是内容创作者和社区讨论参与者，他们需要及时获取赛果、选手动态和争议话题，评论区和资讯流提供了足够的素材。</p>
+        <p>从内容组织的角度看，91今日大赛的推荐逻辑并非简单的热度排序。以今天的英雄联盟比赛为例，JDG与BLG的对抗之所以被放在首位，不仅因为两队近期状态火热，还因为这场比赛涉及季后赛席位的关键积分。编辑在推荐语中特意点出了“中野对抗”和“下路团战”两个战术观察点，这种具体到选手对位的提示，比泛泛而谈的“强强对话”更有参考价值。同样，CS2的FaZe对阵Vitality，卡片中直接给出了地图池胜率数据，帮助观众理解为什么Ancient会成为双方博弈的关键。</p>
+        <p>如果你经常关注格斗游戏赛事，会发现91今日大赛对“小孩”曾卓君的追踪非常细致。今天他有两场比赛被列入推荐：一场是街霸6对阵东大的复仇战，另一场是拳皇15与ET的邀请赛。页面中不仅标注了“小孩2-3惜败”的历史交手记录，还提到他近期特训了反崩连段——这种细节往往是普通赛程表不会收录的。对于格斗游戏爱好者来说，这类信息能提前建立观赛预期，知道应该重点看哪个角色的哪个招式博弈。</p>
+        <p>需要提醒的是，91今日大赛的“最新动态”栏目更新频率较高，但信息密度并不均匀。有些条目只是常规的首发名单公布，有些则包含了选手采访或赛制变更。建议读者优先关注带有明确时间戳和具体队伍/选手名称的条目，比如“JDG打野Kanavi回归首发”就比“赛前准备就绪”这类模糊表述更有信息量。此外，页面中的FAQ和评论区也值得一读，FAQ回答了“如何快速找到某场比赛”“为什么推荐这场而不是那场”等实际问题，评论区则能让你看到其他观众的真实关注点，有时比官方文案更有趣。</p>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="section">
+      <div class="section-header">
+        <h2 class="section-title">❓ 常见问题</h2>
+        <span class="section-sub">关于91今日大赛的疑问解答</span>
+      </div>
+      <div class="faq-grid">
+        <div class="faq-item">
+          <div class="faq-q">91今日大赛的赛程多久更新一次？</div>
+          <div class="faq-a">赛程列表每天上午8点前更新当日全部场次，热门对决卡片会根据实时热度动态调整顺序。遇到临时改期或加赛，会在“最新动态”中第一时间推送。</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">为什么有些比赛没有出现在推荐里？</div>
+          <div class="faq-a">推荐列表优先选择竞技水平高、话题性强或对排名有重要影响的场次。部分表演赛、低级别预选赛可能仅出现在赛程列表中，不占用推荐卡片位。你可以通过分类入口查看完整清单。</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">如何快速找到某个选手或队伍的比赛？</div>
+          <div class="faq-a">使用首屏搜索框输入选手ID或队伍名称即可筛选。也可以关注页面中的标签云，点击“英雄联盟”“CS2”等分类快速缩小范围。移动端支持上下滑动浏览全部场次。</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">91今日大赛提供赛后回放或集锦吗？</div>
+          <div class="faq-a">本页面主要聚焦赛前信息和实时动态，不直接托管回放视频。但“相关资讯”中会收录赛后的战报摘要和精彩镜头描述，方便你快速了解结果。</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">为什么同一天会有多个项目的比赛推荐？</div>
+          <div class="faq-a">91今日大赛定位为综合赛事聚合页，覆盖电竞、传统体育和趣味竞技。不同项目的赛程时间往往错开，方便观众在一天内切换观看。推荐卡片按开赛时间排序，你可以根据自己的兴趣挑选。</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">可以在手机上方便地查看今日大赛吗？</div>
+          <div class="faq-a">页面已做移动端适配，卡片和列表在小屏幕上自动变为单列，搜索框和导航也针对触控优化。建议使用手机浏览器直接访问，无需下载额外应用。</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 用户评论 -->
+    <section id="comments" class="section">
+      <div class="section-header">
+        <h2 class="section-title">💬 社区热评</h2>
+        <span class="section-sub">来自今日大赛观众的讨论</span>
+      </div>
+      <div class="comment-list">
+        <div class="comment-item">
+          <div class="avatar">小</div>
+          <div class="comment-body">
+            <div class="comment-head"><span class="comment-name">电竞老猫</span><span class="comment-date">11月7日 13:22</span></div>
+            <div class="comment-text">JDG打BLG这场感觉还是看中野，Kanavi回归首发的话节奏应该能稳住。BLG下路最近状态也不错，不好说。</div>
+          </div>
+        </div>
+        <div class="comment-item">
+          <div class="avatar">蓝</div>
+          <div class="comment-body">
+            <div class="comment-head"><span class="comment-name">蓝色风暴</span><span class="comment-date">11月7日 12:48</span></div>
+            <div class="comment-text">湖人勇士永远不缺话题，但维金斯要是打不了，勇士锋线防守降一档，浓眉怕是要翻江倒海。</div>
+          </div>
+        </div>
+        <div class="comment-item">
+          <div class="avatar">F</div>
+          <div class="comment-body">
+            <div class="comment-head"><span class="comment-name">FaZe_up</span><span class="comment-date">11月7日 12:05</span></div>
+            <div class="comment-text">Ancient FaZe胜率83%有点吓人，但Vitality最近Nuke也练出来了，bp博弈比正赛还刺激。</div>
+          </div>
+        </div>
+        <div class="comment-item">
+          <div class="avatar">格</div>
+          <div class="comment-body">
+            <div class="comment-head"><span class="comment-name">格斗萌新</span><span class="comment-date">11月7日 11:37</span></div>
+            <div class="comment-text">小孩复仇局必须看！上次输东大就是版边没处理好，这次希望能赢回来。另外拳皇邀请赛也打ET，一天双赛体力吃得消吗？</div>
+          </div>
+        </div>
+        <div class="comment-item">
+          <div class="avatar">潘</div>
+          <div class="comment-body">
+            <div class="comment-head"><span class="comment-name">潘帕斯雄鹰</span><span class="comment-date">11月7日 10:55</span></div>
+            <div class="comment-text">阿根廷巴西友谊赛居然早上8点，上班族表示只能看下半场了。希望梅西多踢一会儿，恩德里克也首发看看成色。</div>
+          </div>
+        </div>
+        <div class="comment-item">
+          <div class="avatar">刀</div>
+          <div class="comment-body">
+            <div class="comment-head"><span class="comment-name">刀塔老油条</span><span class="comment-date">11月7日 10:20</span></div>
+            <div class="comment-text">LGD打Tundra不好说，Tundra那套推进太狠了，LGD要是拖不到后期就没了。Maybe蓝猫必须站出来。</div>
+          </div>
+        </div>
+        <div class="comment-item">
+          <div class="avatar">乒</div>
+          <div class="comment-body">
+            <div class="comment-head"><span class="comment-name">乒乓小将</span><span class="comment-date">11月7日 09:50</span></div>
+            <div class="comment-text">小胖和大头内战，谁赢都正常，但更想看打满七局。王楚钦反手拧拉确实涨球了，樊振东得小心。</div>
+          </div>
+        </div>
+        <div class="comment-item">
+          <div class="avatar">路</div>
+          <div class="comment-body">
+            <div class="comment-head"><span class="comment-name">路人甲</span><span class="comment-date">11月7日 09:12</span></div>
+            <div class="comment-text">这个页面挺方便的，一天比赛一目了然。就是有些比赛时间太阴间了，凌晨的看来只能第二天看战报。</div>
+          </div>
+        </div>
+        <div class="comment-item">
+          <div class="avatar">老</div>
+          <div class="comment-body">
+            <div class="comment-head"><span class="comment-name">老白看比赛</span><span class="comment-date">11月7日 08:44</span></div>
+            <div class="comment-text">建议加一个“提醒”功能，比如点一下卡片就加日历，不然真的容易忘。现在只能自己定闹钟。</div>
+          </div>
+        </div>
+        <div class="comment-item">
+          <div class="avatar">C</div>
+          <div class="comment-body">
+            <div class="comment-head"><span class="comment-name">CS2爱好者</span><span class="comment-date">11月7日 08:03</span></div>
+            <div class="comment-text">FaZe和Vitality这场时间还行，晚上10点能看。ZywOo最近状态爆炸，ropz得在狙击对位上想办法。</div>
+          </div>
+        </div>
+        <div class="comment-item">
+          <div class="avatar">大</div>
+          <div class="comment-body">
+            <div class="comment-head"><span class="comment-name">大赛小粉丝</span><span class="comment-date">11月6日 23:20</span></div>
+            <div class="comment-text">91今日大赛的推荐语写得还行，比那种只写“强强对话”的强多了。至少能看出来编辑真的看过比赛。</div>
+          </div>
+        </div>
+        <div class="comment-item">
+          <div class="avatar">随</div>
+          <div class="comment-body">
+            <div class="comment-head"><span class="comment-name">随便看看</span><span class="comment-date">11月6日 22:15</span></div>
+            <div class="comment-text">说实话有些比赛没听过，但看描述挺有意思的。比如那个拳皇邀请赛，两个老将打情怀局，有点想看。</div>
+          </div>
+        </div>
+        <div class="comment-item">
+          <div class="avatar">小</div>
+          <div class="comment-body">
+            <div class="comment-head"><span class="comment-name">小鹿乱撞</span><span class="comment-date">11月6日 20:30</span></div>
+            <div class="comment-text">希望页面以后能加一个“只看电竞”的筛选，现在混着看有点花眼。不过整体设计挺清爽的。</div>
+          </div>
+        </div>
+        <div class="comment-item">
+          <div class="avatar">F</div>
+          <div class="comment-body">
+            <div class="comment-head"><span class="comment-name">F1狂人</span><span class="comment-date">11月6日 19:10</span></div>
+            <div class="comment-text">虽然今天没有F1，但看到田径和乒乓也挺好，大赛日不一定只看一个项目。</div>
+          </div>
+        </div>
+        <div class="comment-item">
+          <div class="avatar">深</div>
+          <div class="comment-body">
+            <div class="comment-head"><span class="comment-name">深夜看球</span><span class="comment-date">11月6日 18:45</span></div>
+            <div class="comment-text">评论区能不能加个按时间排序？现在好像默认是热评，有时候想看看最新留言。</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 相关资讯 -->
+    <section id="news" class="section">
+      <div class="section-header">
+        <h2 class="section-title">📰 相关资讯</h2>
+        <span class="section-sub">赛事动态与周边消息</span>
+      </div>
+      <div class="news-grid">
+        <div class="news-card">
+          <div class="news-date">2026年11月7日</div>
+          <div class="news-title">JDG赛前海报暗藏玄机，Kanavi首发引发热议</div>
+          <div class="news-summary">JDG官方发布对阵BLG的海报，打野Kanavi出现在C位，暗示将首发出战。粉丝在评论区讨论打野节奏对比赛走势的影响，相关话题登上热搜。</div>
+        </div>
+        <div class="news-card">
+          <div class="news-date">2026年11月7日</div>
+          <div class="news-title">WTT男单半决赛抽签出炉，樊振东王楚钦同区</div>
+          <div class="news-summary">WTT冠军赛男单签表公布，樊振东与王楚钦被分在同一半区，半决赛提前上演国乒内战。两人历史交手记录接近，比赛预计极为激烈。</div>
+        </div>
+        <div class="news-card">
+          <div class="news-date">2026年11月7日</div>
+          <div class="news-title">FaZe与Vitality地图池数据对比：Ancient成关键</div>
+          <div class="news-summary">第三方数据平台统计显示，FaZe在Ancient地图的近期胜率达到83%，而Vitality在该地图胜率仅为54%。分析师认为Ancient大概率会成为首ban或首pick。</div>
+        </div>
+        <div class="news-card">
+          <div class="news-date">2026年11月7日</div>
+          <div class="news-title">小孩一日双赛！街霸6与拳皇15连轴转</div>
+          <div class="news-summary">曾卓君今日将先后出战CPT白金赛和SNK邀请赛，两场比赛间隔不足三小时。粉丝担心体力问题，但小孩在社交平台表示“习惯了，没问题”。</div>
+        </div>
+        <div class="news-card">
+          <div class="news-date">2026年11月6日</div>
+          <div class="news-title">阿根廷巴西友谊赛首发泄露？梅西领衔锋线三叉戟</div>
+          <div class="news-summary">多家南美媒体透露阿根廷将排出梅西、劳塔罗和阿尔瓦雷斯的锋线组合，巴西方面恩德里克有望首发。双方均表示会认真对待这场德比。</div>
+        </div>
+        <div class="news-card">
+          <div class="news-date">2026年11月6日</div>
+          <div class="news-title">利雅得大师赛小组赛LGD出线形势分析</div>
+          <div class="news-summary">LGD目前小组赛2胜1负，对阵Tundra的比赛将直接影响晋级顺位。若取胜大概率锁定胜者组名额，失利则需看其他场次结果。</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 订阅引导 -->
+    <section id="subscribe" class="section">
+      <div style="background: linear-gradient(135deg, #1e2a44, #0f1c2e); border-radius: 28px; padding: 36px 40px; color: #fff; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px;">
+        <div>
+          <h2 style="font-size: 1.6rem; font-weight: 700; margin-bottom: 6px;">📬 订阅每日大赛提醒</h2>
+          <p style="color: #b9c7da; font-size: 0.95rem; max-width: 500px;">留下邮箱，每天上午收到91今日大赛的焦点战预告与编辑推荐，不错过任何一场值得看的对决。</p>
+        </div>
+        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+          <input type="email" placeholder="你的邮箱地址" style="border: none; border-radius: 50px; padding: 12px 22px; font-size: 0.95rem; min-width: 220px; outline: none;">
+          <button style="background: var(--clr-accent); border: none; border-radius: 50px; padding: 12px 28px; font-weight: 600; color: #1f2937; cursor: default;">订阅</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- 页脚 -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div>
+          <div class="footer-brand">91<span>今日大赛</span></div>
+          <p class="footer-copy">每日聚合热门赛程、实时战报与深度分析，覆盖电竞、体育与趣味竞技。为赛事爱好者提供清晰、及时的资讯参考。</p>
+        </div>
+        <div class="footer-links">
+          <a href="/#hot-match">热门对决</a>
+          <a href="/#latest-update">最新动态</a>
+          <a href="/#analysis">深度解析</a>
+          <a href="/#faq">常见问题</a>
+          <a href="/#comments">社区热评</a>
+          <a href="/#news">相关资讯</a>
+        </div>
+        <div style="font-size:0.8rem; color:#7e8b9c;">
+          <p>友情链接：赛事数据站 | 电竞百科 | 体育资讯</p>
+        </div>
+      </div>
+      <div class="footer-disclaimer">
+        © 2026 91今日大赛 · 本站内容为赛事信息聚合与编辑推荐，赛程与结果请以官方发布为准。页面数据仅供参考，不构成任何投注建议。
+      </div>
+    </div>
+  </footer>
+</body>
+      </html>
