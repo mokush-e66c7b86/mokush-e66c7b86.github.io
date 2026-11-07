@@ -1,0 +1,920 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>51短剧-热门短剧推荐_短剧大全在线观看_短剧排行榜</title>
+  <meta name="description" content="51短剧聚焦热门短剧推荐与短剧大全在线观看，提供短剧排行榜、最新短剧更新、深度剧评与追剧指南。发现高能反转、甜宠逆袭、悬疑脑洞等爆款短剧，一站收藏不迷路。">
+  <meta name="keywords" content="51短剧,热门短剧推荐,短剧大全,短剧排行榜,短剧在线观看">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23ff6b6b'/%3E%3Ctext x='50' y='68' font-size='52' text-anchor='middle' fill='white' font-family='Arial'%3E51%3C/text%3E%3C/svg%3E">
+  <style>
+    /* 奶油卡片风 & 杂志专题型混合视觉 */
+    :root {
+      --bg-page: #fbf9f6;
+      --bg-card: #ffffff;
+      --bg-soft: #f6f2ec;
+      --text-primary: #2a2622;
+      --text-secondary: #6b625a;
+      --text-muted: #9a8f86;
+      --accent: #e05a4e;
+      --accent-soft: #fde9e7;
+      --accent-deep: #b33e34;
+      --gold: #cb9a5c;
+      --border-light: #ede7df;
+      --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.03);
+      --shadow-md: 0 12px 28px rgba(0, 0, 0, 0.06);
+      --radius-card: 20px;
+      --radius-sm: 12px;
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+      --max-width: 1200px;
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: var(--font-sans);
+      background: var(--bg-page);
+      color: var(--text-primary);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    ul {
+      list-style: none;
+    }
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    /* 导航 */
+    .nav-main {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-light);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 70px;
+      gap: 20px;
+    }
+    .logo-badge {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      font-size: 1.3rem;
+      letter-spacing: -0.5px;
+      color: var(--accent-deep);
+    }
+    .logo-icon {
+      width: 36px;
+      height: 36px;
+      background: var(--accent);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 18px;
+      font-weight: 800;
+    }
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+    }
+    .nav-links a:hover {
+      color: var(--accent-deep);
+    }
+    .search-mini {
+      display: flex;
+      align-items: center;
+      background: var(--bg-soft);
+      border-radius: 40px;
+      padding: 4px 4px 4px 18px;
+      border: 1px solid var(--border-light);
+    }
+    .search-mini input {
+      border: none;
+      background: transparent;
+      padding: 8px 0;
+      font-size: 0.9rem;
+      outline: none;
+      width: 160px;
+      color: var(--text-primary);
+    }
+    .search-mini button {
+      background: var(--accent);
+      border: none;
+      color: white;
+      padding: 8px 18px;
+      border-radius: 40px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: default;
+    }
+    /* Banner 杂志专题型 */
+    .hero-magazine {
+      padding: 48px 0 32px;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 0.9fr;
+      gap: 40px;
+      align-items: center;
+    }
+    .hero-content h1 {
+      font-size: 3.1rem;
+      line-height: 1.15;
+      font-weight: 800;
+      letter-spacing: -1.5px;
+      margin-bottom: 20px;
+    }
+    .hero-content h1 span {
+      color: var(--accent);
+      position: relative;
+      white-space: nowrap;
+    }
+    .hero-sub {
+      font-size: 1.05rem;
+      color: var(--text-secondary);
+      max-width: 480px;
+      margin-bottom: 28px;
+    }
+    .hero-search-box {
+      display: flex;
+      background: white;
+      border-radius: 60px;
+      padding: 6px 6px 6px 24px;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--border-light);
+      max-width: 460px;
+      margin-bottom: 24px;
+    }
+    .hero-search-box input {
+      border: none;
+      outline: none;
+      flex: 1;
+      font-size: 1rem;
+      background: transparent;
+    }
+    .hero-search-box button {
+      background: var(--accent);
+      color: white;
+      border: none;
+      padding: 12px 28px;
+      border-radius: 60px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: default;
+      white-space: nowrap;
+    }
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .hero-tags a {
+      background: var(--bg-soft);
+      padding: 8px 16px;
+      border-radius: 40px;
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      border: 1px solid var(--border-light);
+      transition: all 0.2s;
+    }
+    .hero-tags a:hover {
+      background: var(--accent-soft);
+      color: var(--accent-deep);
+      border-color: var(--accent-soft);
+    }
+    .hero-cover {
+      background: linear-gradient(145deg, #fdded9 0%, #f6e9dd 100%);
+      border-radius: 32px;
+      padding: 36px 28px;
+      box-shadow: var(--shadow-md);
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .cover-title {
+      font-size: 1.6rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      color: var(--text-primary);
+    }
+    .cover-desc {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+    }
+    .cover-stats {
+      display: flex;
+      gap: 24px;
+      margin-top: 8px;
+    }
+    .stat-item {
+      display: flex;
+      flex-direction: column;
+    }
+    .stat-num {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--accent-deep);
+      line-height: 1.2;
+    }
+    .stat-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--text-muted);
+    }
+    /* 通用 section */
+    .section {
+      padding: 48px 0;
+    }
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 28px;
+    }
+    .section-title {
+      font-size: 1.9rem;
+      font-weight: 700;
+      letter-spacing: -0.8px;
+    }
+    .section-link {
+      font-size: 0.9rem;
+      color: var(--accent);
+      font-weight: 500;
+    }
+    /* 热门推荐卡片网格 */
+    .card-grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+    .drama-card {
+      background: var(--bg-card);
+      border-radius: var(--radius-card);
+      padding: 20px 18px 18px;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--border-light);
+      transition: all 0.25s ease;
+      display: flex;
+      flex-direction: column;
+    }
+    .drama-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+    }
+    .card-tag {
+      display: inline-block;
+      background: var(--accent-soft);
+      color: var(--accent-deep);
+      font-size: 0.7rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 40px;
+      margin-bottom: 12px;
+      align-self: flex-start;
+    }
+    .card-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .card-meta {
+      display: flex;
+      gap: 12px;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+      flex-wrap: wrap;
+    }
+    .card-desc {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+      flex: 1;
+      margin-bottom: 12px;
+    }
+    .card-footer {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border-light);
+      padding-top: 12px;
+    }
+    /* 最新更新列表 */
+    .update-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px 40px;
+    }
+    .update-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 0;
+      border-bottom: 1px dashed var(--border-light);
+    }
+    .update-name {
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+    .update-badge {
+      font-size: 0.7rem;
+      background: var(--bg-soft);
+      padding: 3px 10px;
+      border-radius: 40px;
+      color: var(--text-secondary);
+      white-space: nowrap;
+      margin-left: 12px;
+    }
+    /* 分类入口 */
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+    .cat-item {
+      background: var(--bg-card);
+      border-radius: 16px;
+      padding: 18px 20px;
+      border: 1px solid var(--border-light);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      transition: all 0.2s;
+    }
+    .cat-item:hover {
+      background: var(--accent-soft);
+      border-color: var(--accent-soft);
+    }
+    .cat-icon {
+      width: 40px;
+      height: 40px;
+      background: var(--bg-soft);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+    }
+    .cat-name {
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+    .cat-count {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+    /* 深度解析 */
+    .deep-analysis {
+      background: var(--bg-card);
+      border-radius: var(--radius-card);
+      padding: 40px 44px;
+      border: 1px solid var(--border-light);
+      box-shadow: var(--shadow-sm);
+    }
+    .deep-analysis h2 {
+      font-size: 1.9rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      letter-spacing: -0.8px;
+    }
+    .deep-analysis p {
+      font-size: 0.98rem;
+      color: var(--text-secondary);
+      margin-bottom: 16px;
+      line-height: 1.8;
+    }
+    .deep-analysis strong {
+      color: var(--text-primary);
+      font-weight: 700;
+    }
+    /* FAQ 卡片问答 */
+    .faq-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+    .faq-card {
+      background: var(--bg-card);
+      border-radius: var(--radius-sm);
+      padding: 24px;
+      border: 1px solid var(--border-light);
+    }
+    .faq-q {
+      font-weight: 700;
+      font-size: 1.05rem;
+      margin-bottom: 12px;
+      color: var(--text-primary);
+      display: flex;
+      gap: 10px;
+    }
+    .faq-q span {
+      color: var(--accent);
+    }
+    .faq-a {
+      font-size: 0.92rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+    /* 评论社区 */
+    .comment-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+    .comment-card {
+      background: var(--bg-card);
+      border-radius: var(--radius-sm);
+      padding: 20px;
+      border: 1px solid var(--border-light);
+      display: flex;
+      gap: 14px;
+    }
+    .avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 40px;
+      background: var(--accent-soft);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      color: var(--accent-deep);
+      flex-shrink: 0;
+    }
+    .comment-body {
+      flex: 1;
+    }
+    .comment-user {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+    .comment-date {
+      font-weight: 400;
+      color: var(--text-muted);
+      font-size: 0.75rem;
+    }
+    .comment-text {
+      font-size: 0.92rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+    /* 资讯卡片 */
+    .news-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .news-card {
+      background: var(--bg-card);
+      border-radius: var(--radius-sm);
+      padding: 22px;
+      border: 1px solid var(--border-light);
+      transition: all 0.2s;
+    }
+    .news-card:hover {
+      box-shadow: var(--shadow-sm);
+    }
+    .news-date {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+    .news-title {
+      font-weight: 700;
+      font-size: 1.05rem;
+      margin-bottom: 10px;
+      line-height: 1.4;
+    }
+    .news-abstract {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+    /* 页脚 */
+    .footer {
+      background: #1f1c19;
+      color: #cabfb6;
+      padding: 48px 0 24px;
+      margin-top: 48px;
+    }
+    .footer-inner {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1.5fr;
+      gap: 40px;
+    }
+    .footer-brand {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: white;
+      margin-bottom: 16px;
+    }
+    .footer-desc {
+      font-size: 0.9rem;
+      line-height: 1.7;
+      color: #9a8f86;
+    }
+    .footer-title {
+      font-weight: 600;
+      color: white;
+      margin-bottom: 18px;
+      font-size: 1rem;
+    }
+    .footer-links li {
+      margin-bottom: 10px;
+      font-size: 0.9rem;
+    }
+    .footer-links a:hover {
+      color: white;
+    }
+    .footer-bottom {
+      margin-top: 40px;
+      padding-top: 24px;
+      border-top: 1px solid #332e29;
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.8rem;
+      color: #7a7068;
+    }
+    /* 响应式 */
+    @media (max-width: 1024px) {
+      .hero-grid { grid-template-columns: 1fr; gap: 32px; }
+      .card-grid-4 { grid-template-columns: repeat(2, 1fr); }
+      .category-grid { grid-template-columns: repeat(2, 1fr); }
+      .news-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-inner { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hero-content h1 { font-size: 2.2rem; }
+      .update-list { grid-template-columns: 1fr; }
+      .faq-grid { grid-template-columns: 1fr; }
+      .comment-grid { grid-template-columns: 1fr; }
+      .deep-analysis { padding: 28px 20px; }
+      .news-grid { grid-template-columns: 1fr; }
+      .footer-inner { grid-template-columns: 1fr; gap: 28px; }
+      .search-mini { display: none; }
+    }
+  </style>
+  <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+  <!-- 导航 -->
+  <header class="nav-main">
+    <div class="container nav-inner">
+      <a href="/#home" class="logo-badge">
+        <span class="logo-icon">51</span>
+        <span>51短剧</span>
+      </a>
+      <nav class="nav-links">
+        <a href="/#recommend">热门推荐</a>
+        <a href="/#latest">最新更新</a>
+        <a href="/#ranking">短剧排行榜</a>
+        <a href="/#category">分类大全</a>
+        <a href="/#faq">常见问题</a>
+      </nav>
+      <div class="search-mini">
+        <input type="text" placeholder="搜索短剧、演员、题材..." value="甜宠短剧">
+        <button>搜索</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Banner 杂志专题型 -->
+  <section class="hero-magazine" id="home">
+    <div class="container hero-grid">
+      <div class="hero-content">
+        <h1>51短剧 · <span>热门短剧推荐</span>与在线观看指南</h1>
+        <p class="hero-sub">精选全网高口碑短剧，覆盖甜宠、逆袭、悬疑、古风等热门题材。每日追踪更新动态，提供真实剧评与排行榜，帮你高效找到下一部想追的剧。</p>
+        <div class="hero-search-box">
+          <input type="text" placeholder="搜索你感兴趣的短剧..." value="闪婚后大叔每天狂宠我">
+          <button>立即搜索</button>
+        </div>
+        <div class="hero-tags">
+          <a href="/#recommend">甜宠上头</a>
+          <a href="/#recommend">逆袭爽剧</a>
+          <a href="/#recommend">悬疑烧脑</a>
+          <a href="/#recommend">古风穿越</a>
+          <a href="/#recommend">都市情感</a>
+          <a href="/#latest">今日更新</a>
+          <a href="/#ranking">口碑榜</a>
+          <a href="/#category">全部分类</a>
+        </div>
+      </div>
+      <div class="hero-cover">
+        <div class="cover-title">本周短剧热度榜</div>
+        <div class="cover-desc">基于播放量、讨论度与完播率综合排序，每日更新。</div>
+        <div class="cover-stats">
+          <div class="stat-item">
+            <span class="stat-num">128+</span>
+            <span class="stat-label">在榜短剧</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-num">9.2</span>
+            <span class="stat-label">最高评分</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-num">36</span>
+            <span class="stat-label">今日上新</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 热门推荐 -->
+  <section class="section" id="recommend">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">热门短剧推荐</h2>
+        <a href="/#ranking" class="section-link">查看完整排行榜 →</a>
+      </div>
+      <div class="card-grid-4">
+        <article class="drama-card">
+          <span class="card-tag">甜宠</span>
+          <h3 class="card-title">闪婚后大叔每天狂宠我</h3>
+          <div class="card-meta"><span>更新至72集</span><span>热度 9862</span></div>
+          <p class="card-desc">替嫁闪婚却遇到隐藏首富，先婚后爱+极致宠溺，每集三分钟高能反转，下饭必备。</p>
+          <div class="card-footer"><span>评分 8.9</span><span>今日播放 236w</span></div>
+        </article>
+        <article class="drama-card">
+          <span class="card-tag">逆袭</span>
+          <h3 class="card-title">归来后我成了全球首富</h3>
+          <div class="card-meta"><span>全80集</span><span>热度 9540</span></div>
+          <p class="card-desc">隐忍三年受尽白眼，一朝身份曝光震惊全场。打脸剧情密集，爽点节奏极快。</p>
+          <div class="card-footer"><span>评分 8.7</span><span>今日播放 198w</span></div>
+        </article>
+        <article class="drama-card">
+          <span class="card-tag">悬疑</span>
+          <h3 class="card-title">深夜来电：十二秒</h3>
+          <div class="card-meta"><span>更新至第16集</span><span>热度 9120</span></div>
+          <p class="card-desc">每晚十二秒的无声来电，牵扯出十年前的连环谜案。短小精悍，每集一个反转。</p>
+          <div class="card-footer"><span>评分 9.1</span><span>今日播放 162w</span></div>
+        </article>
+        <article class="drama-card">
+          <span class="card-tag">古风</span>
+          <h3 class="card-title">王妃她只想搞事业</h3>
+          <div class="card-meta"><span>全64集</span><span>热度 8890</span></div>
+          <p class="card-desc">穿成炮灰王妃，不谈恋爱只做生意，从摆摊到皇商，反套路剧情让观众直呼过瘾。</p>
+          <div class="card-footer"><span>评分 8.8</span><span>今日播放 145w</span></div>
+        </article>
+        <article class="drama-card">
+          <span class="card-tag">都市</span>
+          <h3 class="card-title">离婚后前夫跪求复合</h3>
+          <div class="card-meta"><span>更新至58集</span><span>热度 8730</span></div>
+          <p class="card-desc">全职太太觉醒后重返职场，前夫追悔莫及。女性成长+职场逆袭，情感刻画细腻。</p>
+          <div class="card-footer"><span>评分 8.5</span><span>今日播放 133w</span></div>
+        </article>
+        <article class="drama-card">
+          <span class="card-tag">脑洞</span>
+          <h3 class="card-title">我的手机能连接未来</h3>
+          <div class="card-meta"><span>全40集</span><span>热度 8510</span></div>
+          <p class="card-desc">意外获得来自未来的神秘短信，每一次选择都改变人生轨迹。轻科幻+悬疑，设定新颖。</p>
+          <div class="card-footer"><span>评分 8.6</span><span>今日播放 121w</span></div>
+        </article>
+        <article class="drama-card">
+          <span class="card-tag">喜剧</span>
+          <h3 class="card-title">我在古代开外卖</h3>
+          <div class="card-meta"><span>更新至32集</span><span>热度 8320</span></div>
+          <p class="card-desc">穿越成落魄厨娘，用现代外卖模式搅动古代餐饮江湖。轻松搞笑，美食镜头诱人。</p>
+          <div class="card-footer"><span>评分 8.4</span><span>今日播放 110w</span></div>
+        </article>
+        <article class="drama-card">
+          <span class="card-tag">虐恋</span>
+          <h3 class="card-title">如果眼泪不记得</h3>
+          <div class="card-meta"><span>全56集</span><span>热度 8150</span></div>
+          <p class="card-desc">失忆梗玩出新花样，男主追妻火葬场却屡屡碰壁。哭戏感染力强，情感浓度高。</p>
+          <div class="card-footer"><span>评分 8.3</span><span>今日播放 98w</span></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 最新更新 -->
+  <section class="section" id="latest" style="background: var(--bg-soft); border-radius: 40px; margin: 0 24px;">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">最新更新 · 今日上新</h2>
+        <a href="/#category" class="section-link">全部更新 →</a>
+      </div>
+      <div class="update-list">
+        <div class="update-item"><span class="update-name">闪婚后大叔每天狂宠我</span><span class="update-badge">第72集 大结局</span></div>
+        <div class="update-item"><span class="update-name">深夜来电：十二秒</span><span class="update-badge">第16集 真相逼近</span></div>
+        <div class="update-item"><span class="update-name">离婚后前夫跪求复合</span><span class="update-badge">第58集 身份反转</span></div>
+        <div class="update-item"><span class="update-name">我在古代开外卖</span><span class="update-badge">第32集 新店开张</span></div>
+        <div class="update-item"><span class="update-name">重生之影后归来</span><span class="update-badge">第24集 首映礼风波</span></div>
+        <div class="update-item"><span class="update-name">总裁的隐婚甜妻</span><span class="update-badge">第46集 意外相遇</span></div>
+        <div class="update-item"><span class="update-name">异能觉醒：末日边缘</span><span class="update-badge">第12集 能力升级</span></div>
+        <div class="update-item"><span class="update-name">穿书后我成了反派白月光</span><span class="update-badge">第38集 剧情崩坏</span></div>
+        <div class="update-item"><span class="update-name">神医下山：开局救了个总裁</span><span class="update-badge">第60集 医武双修</span></div>
+        <div class="update-item"><span class="update-name">时光代理人：短剧版</span><span class="update-badge">第18集 穿越节点</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 分类入口 -->
+  <section class="section" id="category">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">短剧分类大全</h2>
+        <a href="/#recommend" class="section-link">按分类找剧 →</a>
+      </div>
+      <div class="category-grid">
+        <a href="/#recommend" class="cat-item"><span class="cat-icon">💕</span><span><span class="cat-name">甜宠恋爱</span><br><span class="cat-count">1280部</span></span></a>
+        <a href="/#recommend" class="cat-item"><span class="cat-icon">⚡</span><span><span class="cat-name">逆袭爽剧</span><br><span class="cat-count">960部</span></span></a>
+        <a href="/#recommend" class="cat-item"><span class="cat-icon">🔍</span><span><span class="cat-name">悬疑推理</span><br><span class="cat-count">540部</span></span></a>
+        <a href="/#recommend" class="cat-item"><span class="cat-icon">🏮</span><span><span class="cat-name">古风穿越</span><br><span class="cat-count">710部</span></span></a>
+        <a href="/#recommend" class="cat-item"><span class="cat-icon">🏙️</span><span><span class="cat-name">都市情感</span><br><span class="cat-count">1120部</span></span></a>
+        <a href="/#recommend" class="cat-item"><span class="cat-icon">😂</span><span><span class="cat-name">喜剧搞笑</span><br><span class="cat-count">430部</span></span></a>
+        <a href="/#recommend" class="cat-item"><span class="cat-icon">🌌</span><span><span class="cat-name">脑洞科幻</span><br><span class="cat-count">290部</span></span></a>
+        <a href="/#recommend" class="cat-item"><span class="cat-icon">💔</span><span><span class="cat-name">虐恋纠葛</span><br><span class="cat-count">380部</span></span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 深度解析 -->
+  <section class="section" id="analysis">
+    <div class="container">
+      <div class="deep-analysis">
+        <h2>深度解析：51短剧为什么值得反复刷？</h2>
+        <p><strong>51短剧</strong>作为短剧内容聚合与推荐平台，最核心的价值在于用最短的时间帮观众筛选出高质量的短剧作品。当下短剧市场每天都有大量新剧上线，质量参差不齐，观众往往需要花费大量时间试错。而51短剧通过编辑精选、用户评分和完播率数据，将真正有看点的作品推到前排，让“找剧”这件事变得高效。</p>
+        <p>从内容题材来看，短剧的吸引力集中在<strong>“高密度情绪供给”</strong>。无论是甜宠剧的极致撒糖、逆袭剧的打脸爽感，还是悬疑剧的每集反转，都遵循着极短时间内抓住注意力的创作逻辑。51短剧在推荐时特别标注了题材标签和节奏特点，比如“三分钟一反转”“前六集高能”等，帮助观众根据自己当天的情绪需求来挑选——想放松就看甜宠，想刺激就看悬疑，想解压就看逆袭。</p>
+        <p>在人物塑造上，短剧虽然篇幅短，但胜在角色标签鲜明。51短剧的剧评区经常出现关于“男主眼神戏”“女主反击时刻”的讨论，这说明观众对短剧的表演细节同样有要求。平台在推荐卡片中增加了“名场面提示”，让用户在点开之前就能预判这部剧的表演风格是否符合自己的偏好。</p>
+        <p>节奏与消费体验是短剧区别于长视频的核心。51短剧的页面结构充分考虑了“碎片化消费”场景：分类筛选支持按集数、时长、题材多维度交叉，最新更新模块按时间倒序排列，热门推荐则基于实时热度动态调整。这种设计让用户无论是在通勤路上还是午休间隙，都能快速找到一部可以立刻开刷的短剧。</p>
+        <p>适合人群方面，51短剧覆盖了从学生群体到职场白领的广泛受众。学生党偏爱脑洞和穿越题材，职场用户更倾向都市情感和逆袭爽剧，而悬疑爱好者则对短小精悍的推理短剧情有独钟。平台通过分类和标签体系，让不同人群都能找到自己的“舒适区”。</p>
+        <p>与同类平台相比，51短剧的差异化在于<strong>“编辑推荐+数据榜单”双轨并行</strong>。既保留人工精选的审美判断，又让大众播放数据说话，避免了好剧被埋没或流量剧霸屏的极端情况。如果你搜索“51短剧”，大概率是想找一个靠谱的短剧入口，那么这个页面提供的分类导航、排行榜和深度剧评，应该能满足你的需求。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section" id="faq">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">常见问题</h2>
+        <a href="/#comment" class="section-link">更多讨论 →</a>
+      </div>
+      <div class="faq-grid">
+        <div class="faq-card">
+          <div class="faq-q"><span>Q1.</span> 51短剧主要收录哪些类型的短剧？</div>
+          <div class="faq-a">目前51短剧收录了甜宠恋爱、逆袭爽剧、悬疑推理、古风穿越、都市情感、喜剧搞笑、脑洞科幻和虐恋纠葛等八大类。每部剧都标注了题材标签和节奏特点，方便你按情绪需求快速筛选。如果你偏好强反转，可以重点关注悬疑推理和逆袭分类。</div>
+        </div>
+        <div class="faq-card">
+          <div class="faq-q"><span>Q2.</span> 短剧一般多少集？每集多长？</div>
+          <div class="faq-a">主流短剧通常在40集到80集之间，单集时长在1.5分钟到3分钟不等。部分精品短剧会控制在30集左右，节奏更紧凑。51短剧在推荐卡片中会标注总集数和更新状态，你可以根据自己可支配的时间来选择。</div>
+        </div>
+        <div class="faq-card">
+          <div class="faq-q"><span>Q3.</span> 如何判断一部短剧是否值得追？</div>
+          <div class="faq-a">建议先看51短剧编辑推荐卡片中的“看点”描述，重点关注前三集的剧情钩子。另外，用户评分在8.5分以上、完播率高的作品通常质量有保障。如果你不喜欢试错，可以直接从热门排行榜前20名开始看，踩雷概率较低。</div>
+        </div>
+        <div class="faq-card">
+          <div class="faq-q"><span>Q4.</span> 51短剧的排行榜多久更新一次？</div>
+          <div class="faq-a">热度榜和口碑榜每天凌晨更新一次，数据来源于播放量、用户评分和评论互动量。编辑推荐榜则每周三更新，由编辑团队根据当周上新短剧的质量综合评定。如果你看到某部剧突然冲上榜单，通常意味着它近期有重大更新或口碑发酵。</div>
+        </div>
+        <div class="faq-card">
+          <div class="faq-q"><span>Q5.</span> 这些短剧可以在哪里观看？</div>
+          <div class="faq-a">51短剧作为内容推荐与导航平台，本身不提供播放源。页面内展示的短剧信息会标注常见的上线平台类型，你可以根据剧名在对应的短剧小程序或视频平台搜索观看。我们建议优先选择官方渠道，以获得更好的画质和更新保障。</div>
+        </div>
+        <div class="faq-card">
+          <div class="faq-q"><span>Q6.</span> 为什么有些短剧看到一半就找不到了？</div>
+          <div class="faq-a">短剧行业更新迭代很快，部分作品可能因为版权调整或平台策略变化而下架。51短剧会尽量保留剧目的基本信息供你参考，但播放状态可能随时变动。如果你发现某部剧无法观看，可以到评论区反馈，我们会尽快核实并更新状态。</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 用户评论 -->
+  <section class="section" id="comment" style="background: var(--bg-soft); border-radius: 40px; margin: 0 24px;">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">追剧用户怎么说</h2>
+        <a href="/#recommend" class="section-link">参与讨论 →</a>
+      </div>
+      <div class="comment-grid">
+        <div class="comment-card"><div class="avatar">小</div><div class="comment-body"><div class="comment-user">小糖豆 <span class="comment-date">2026-11-05</span></div><div class="comment-text">闪婚后大叔每天狂宠我真的是近期甜宠天花板，男主那个眼神太苏了，每集三分钟根本不够看！</div></div></div>
+        <div class="comment-card"><div class="avatar">追</div><div class="comment-body"><div class="comment-user">追剧不熬夜 <span class="comment-date">2026-11-04</span></div><div class="comment-text">深夜来电十二秒的编剧太会了，每集结尾都卡在关键地方，逼我开下一集，悬疑短剧请按这个标准卷起来。</div></div></div>
+        <div class="comment-card"><div class="avatar">路</div><div class="comment-body"><div class="comment-user">路人甲看剧 <span class="comment-date">2026-11-03</span></div><div class="comment-text">归来后我成了全球首富剧情确实爽，但有些打脸桥段稍微有点重复，看到后面有点疲倦，不过下饭还是可以的。</div></div></div>
+        <div class="comment-card"><div class="avatar">古</div><div class="comment-body"><div class="comment-user">古风爱好者 <span class="comment-date">2026-11-02</span></div><div class="comment-text">王妃她只想搞事业这种反套路女主多来点！终于不是恋爱脑了，搞事业的剧情看着真舒服。</div></div></div>
+        <div class="comment-card"><div class="avatar">职</div><div class="comment-body"><div class="comment-user">职场小陈 <span class="comment-date">2026-11-01</span></div><div class="comment-text">离婚后前夫跪求复合本来以为是普通爽剧，结果女主职场成长线写得挺扎实，有几段还挺戳人的。</div></div></div>
+        <div class="comment-card"><div class="avatar">脑</div><div class="comment-body"><div class="comment-user">脑洞收藏家 <span class="comment-date">2026-10-31</span></div><div class="comment-text">我的手机能连接未来设定挺有意思，不过后期有点收不住，希望第二季能把坑填完，目前给个8分。</div></div></div>
+        <div class="comment-card"><div class="avatar">下</div><div class="comment-body"><div class="comment-user">下饭剧选手 <span class="comment-date">2026-10-30</span></div><div class="comment-text">我在古代开外卖太适合吃饭时候看了，轻松搞笑还有美食，女主性格也讨喜，一口气刷了20集。</div></div></div>
+        <div class="comment-card"><div class="avatar">泪</div><div class="comment-body"><div class="comment-user">泪点很低 <span class="comment-date">2026-10-29</span></div><div class="comment-text">如果眼泪不记得后劲太大了，男女主哭戏都好有感染力，看完眼睛肿了，但值得。</div></div></div>
+        <div class="comment-card"><div class="avatar">榜</div><div class="comment-body"><div class="comment-user">榜单巡逻员 <span class="comment-date">2026-10-28</span></div><div class="comment-text">51短剧的排行榜挺有参考价值的，我按榜单追了几部都没踩雷，比自己在小程序里瞎翻效率高多了。</div></div></div>
+        <div class="comment-card"><div class="avatar">新</div><div class="comment-body"><div class="comment-user">新入坑短剧 <span class="comment-date">2026-10-27</span></div><div class="comment-text">之前没看过短剧，朋友推荐来这个页面找入门剧，分类做得很清楚，甜宠和悬疑分开找很方便。</div></div></div>
+        <div class="comment-card"><div class="avatar">吐</div><div class="comment-body"><div class="comment-user">吐槽小能手 <span class="comment-date">2026-10-26</span></div><div class="comment-text">有些短剧的配音真的太出戏了，希望51短剧以后能标注一下是原声还是配音，这点对观感影响挺大的。</div></div></div>
+        <div class="comment-card"><div class="avatar">期</div><div class="comment-body"><div class="comment-user">期待更新中 <span class="comment-date">2026-10-25</span></div><div class="comment-text">异能觉醒：末日边缘更得好慢啊，一周才两集，但是特效在短剧里算很良心了，等更。</div></div></div>
+        <div class="comment-card"><div class="avatar">书</div><div class="comment-body"><div class="comment-user">书粉转剧粉 <span class="comment-date">2026-10-24</span></div><div class="comment-text">穿书后我成了反派白月光改编得还可以，名场面基本都保留了，女主颜值也贴脸，原著党表示满意。</div></div></div>
+        <div class="comment-card"><div class="avatar">医</div><div class="comment-body"><div class="comment-user">医学生小林 <span class="comment-date">2026-10-23</span></div><div class="comment-text">神医下山这种题材逻辑不能细想，但看个爽就行了，男主针灸手法看得我职业病犯了哈哈哈。</div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 相关资讯 -->
+  <section class="section" id="news">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">短剧相关资讯</h2>
+        <a href="/#latest" class="section-link">更多动态 →</a>
+      </div>
+      <div class="news-grid">
+        <article class="news-card">
+          <div class="news-date">2026-11-06</div>
+          <h3 class="news-title">短剧市场Q4观察：精品化趋势明显，单集成本上涨</h3>
+          <p class="news-abstract">随着观众审美提升，短剧制作开始向电影级质感靠拢。本周多部新剧在摄影和配乐上投入明显加大，51短剧编辑推荐榜也相应调整了评分权重。</p>
+        </article>
+        <article class="news-card">
+          <div class="news-date">2026-11-05</div>
+          <h3 class="news-title">《深夜来电：十二秒》登顶悬疑短剧热度榜</h3>
+          <p class="news-abstract">该剧凭借紧凑的叙事和出色的氛围营造，在51短剧悬疑分类中连续三天排名第一。用户评论集中讨论“每集结尾的钩子设计”。</p>
+        </article>
+        <article class="news-card">
+          <div class="news-date">2026-11-04</div>
+          <h3 class="news-title">甜宠短剧仍是流量担当，但观众开始追求“甜而不腻”</h3>
+          <p class="news-abstract">51短剧数据显示，纯撒糖类短剧的完播率略有下滑，而带有轻喜剧元素或职场背景的甜宠剧表现更稳，编剧开始注重人设的真实感。</p>
+        </article>
+        <article class="news-card">
+          <div class="news-date">2026-11-03</div>
+          <h3 class="news-title">短剧出海加速，古风题材在海外市场表现亮眼</h3>
+          <p class="news-abstract">多部古风穿越短剧在海外平台获得较高点击，51短剧也在关注这一趋势，未来可能会在分类中增加“出海热门”标签。</p>
+        </article>
+        <article class="news-card">
+          <div class="news-date">2026-11-02</div>
+          <h3 class="news-title">51短剧新增“完播率”数据维度，帮助判断剧情吸引力</h3>
+          <p class="news-abstract">平台在推荐卡片中增加了完播率提示，观众可以更直观地了解一部短剧是否真正“留得住人”，减少因开头精彩但后劲不足带来的试错成本。</p>
+        </article>
+        <article class="news-card">
+          <div class="news-date">2026-11-01</div>
+          <h3 class="news-title">本月待播短剧前瞻：悬疑赛道拥挤，三部新作同日上线</h3>
+          <p class="news-abstract">11月第二周将有三部悬疑短剧同天上线，题材涵盖时空循环、心理犯罪和民俗探案。51短剧已提前收录剧目信息，可提前关注。</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 页脚 -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div>
+          <div class="footer-brand">51短剧</div>
+          <p class="footer-desc">51短剧是短剧爱好者的内容导航与推荐平台，提供热门短剧推荐、短剧排行榜、分类大全和深度剧评。我们致力于帮助观众高效发现高质量短剧，节省选剧时间。</p>
+        </div>
+        <div>
+          <div class="footer-title">快速导航</div>
+          <ul class="footer-links">
+            <li><a href="/#recommend">热门推荐</a></li>
+            <li><a href="/#latest">最新更新</a></li>
+            <li><a href="/#ranking">短剧排行榜</a></li>
+            <li><a href="/#category">分类大全</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-title">帮助中心</div>
+          <ul class="footer-links">
+            <li><a href="/#faq">常见问题</a></li>
+            <li><a href="/#comment">用户评论</a></li>
+            <li><a href="/#news">相关资讯</a></li>
+            <li><a href="/#home">关于我们</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-title">友情链接</div>
+          <ul class="footer-links">
+            <li><a href="/#home">短剧大全</a></li>
+            <li><a href="/#home">短剧排行榜</a></li>
+            <li><a href="/#home">在线观看指南</a></li>
+            <li><a href="/#home">影视内容导航</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 51短剧 · 内容推荐平台</span>
+        <span>免责声明：本站不提供任何视听上传或存储服务，所有内容均来自公开信息整理，仅供浏览参考。</span>
+      </div>
+    </div>
+  </footer>
+</body>
+  </html>
