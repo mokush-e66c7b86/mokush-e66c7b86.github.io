@@ -1,0 +1,661 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>91次元浏览器-次元内容聚合浏览器_二次元资源浏览与追番工具</title>
+<meta name="description" content="91次元浏览器是面向二次元用户的次元内容聚合与浏览工具专题页，整理91次元浏览器的动漫资源浏览、追番体验、分类导航、画质与移动端适配解析，并汇总热门推荐、最新更新、常见问题与用户评论，帮助你快速了解这款次元浏览器是否适合日常追番与内容收藏。">
+<meta name="keywords" content="91次元浏览器,次元浏览器,二次元浏览器,追番工具,动漫资源浏览">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23141a2e'/%3E%3Ccircle cx='32' cy='32' r='15' fill='none' stroke='%2358e1d0' stroke-width='4'/%3E%3Ccircle cx='32' cy='32' r='5' fill='%23ff6fb5'/%3E%3C/svg%3E">
+<style>
+:root{
+  --bg:#0e1322;
+  --bg2:#141a2e;
+  --card:#1a2138;
+  --card2:#212a45;
+  --line:rgba(255,255,255,.09);
+  --txt:#e8ecf7;
+  --sub:#9aa6c4;
+  --acc:#58e1d0;
+  --acc2:#ff6fb5;
+  --acc3:#7c8cff;
+  --warn:#ffcc66;
+  --radius:14px;
+  --shadow:0 10px 30px rgba(0,0,0,.35);
+  --maxw:1200px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:radial-gradient(1200px 600px at 15% -10%,rgba(124,140,255,.18),transparent 60%),
+             radial-gradient(900px 500px at 90% 0%,rgba(88,225,208,.12),transparent 55%),
+             var(--bg);
+  color:var(--txt);
+  font-family:"PingFang SC","Microsoft YaHei","Hiragino Sans GB",system-ui,-apple-system,sans-serif;
+  font-size:15px;line-height:1.75;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit;text-decoration:none}
+img{max-width:100%}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 18px}
+.sec{padding:46px 0 8px}
+.sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:22px;flex-wrap:wrap}
+.sec-head h2{font-size:23px;letter-spacing:.5px;position:relative;padding-left:14px;line-height:1.3}
+.sec-head h2::before{content:"";position:absolute;left:0;top:50%;transform:translateY(-50%);width:5px;height:20px;border-radius:3px;background:linear-gradient(180deg,var(--acc),var(--acc3))}
+.sec-head .tip{color:var(--sub);font-size:13px}
+.more-link{font-size:13px;color:var(--acc);border:1px solid rgba(88,225,208,.35);padding:5px 12px;border-radius:20px;transition:.25s}
+.more-link:hover{background:rgba(88,225,208,.12)}
+
+/* ===== 导航 ===== */
+.nav{position:sticky;top:0;z-index:60;background:rgba(14,19,34,.86);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav-in{max-width:var(--maxw);margin:0 auto;padding:0 18px;height:64px;display:flex;align-items:center;gap:22px}
+.logo{display:flex;align-items:center;gap:9px;font-weight:800;font-size:17px;letter-spacing:.5px;white-space:nowrap}
+.logo .mark{width:30px;height:30px;border-radius:9px;background:linear-gradient(135deg,var(--acc),var(--acc3));display:grid;place-items:center;color:#0e1322;font-size:14px;font-weight:900}
+.logo em{font-style:normal;color:var(--acc)}
+.nav-links{display:flex;gap:6px;overflow-x:auto;flex:1;scrollbar-width:none}
+.nav-links::-webkit-scrollbar{display:none}
+.nav-links a{font-size:13.5px;color:var(--sub);padding:7px 11px;border-radius:8px;white-space:nowrap;transition:.2s}
+.nav-links a:hover{color:var(--txt);background:rgba(255,255,255,.06)}
+.nav-cta{font-size:13px;padding:8px 16px;border-radius:20px;background:linear-gradient(135deg,var(--acc),var(--acc3));color:#0b1020;font-weight:700;white-space:nowrap}
+
+/* ===== Banner ===== */
+.hero{padding:52px 0 30px;position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;right:-120px;top:-60px;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(255,111,181,.16),transparent 70%);pointer-events:none}
+.hero-grid{display:grid;grid-template-columns:1.25fr .85fr;gap:36px;align-items:center}
+.hero h1{font-size:38px;line-height:1.28;letter-spacing:.5px;margin-bottom:16px}
+.hero h1 span{background:linear-gradient(90deg,var(--acc),var(--acc3) 60%,var(--acc2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p.lead{color:var(--sub);font-size:15px;margin-bottom:8px}
+.hero .badges{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 22px}
+.hero .badges i{font-style:normal;font-size:12.5px;color:var(--acc);background:rgba(88,225,208,.1);border:1px solid rgba(88,225,208,.25);padding:4px 11px;border-radius:20px}
+.searchbox{display:flex;gap:8px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:7px;box-shadow:var(--shadow)}
+.searchbox input{flex:1;background:transparent;border:0;outline:0;color:var(--txt);font-size:14px;padding:9px 12px;font-family:inherit}
+.searchbox input::placeholder{color:#64718f}
+.searchbox button{background:linear-gradient(135deg,var(--acc),var(--acc3));border:0;color:#0b1020;font-weight:700;font-size:14px;padding:10px 22px;border-radius:9px;cursor:pointer;font-family:inherit;transition:.2s}
+.searchbox button:hover{filter:brightness(1.08)}
+.hero-btns{display:flex;flex-wrap:wrap;gap:9px;margin-top:16px}
+.hero-btns a{font-size:13px;color:var(--sub);border:1px solid var(--line);padding:7px 14px;border-radius:20px;transition:.22s;background:rgba(255,255,255,.02)}
+.hero-btns a:hover{color:var(--txt);border-color:rgba(88,225,208,.5);transform:translateY(-2px)}
+.hero-visual{position:relative}
+.poster-stack{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.poster{height:118px;border-radius:12px;border:1px solid var(--line);position:relative;overflow:hidden;display:flex;align-items:flex-end;padding:12px;font-size:13px;font-weight:700;color:#fff;text-shadow:0 2px 8px rgba(0,0,0,.6);transition:.28s}
+.poster:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+.poster:nth-child(1){background:linear-gradient(150deg,#2b3d8f,#5a2a78)}
+.poster:nth-child(2){background:linear-gradient(150deg,#0f5f66,#123a63)}
+.poster:nth-child(3){background:linear-gradient(150deg,#7a2d55,#3a1f52)}
+.poster:nth-child(4){background:linear-gradient(150deg,#1b4a5e,#2d6b4f)}
+
+/* ===== 分类 ===== */
+.cats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.cat{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:16px 15px;transition:.25s;display:flex;align-items:center;gap:12px}
+.cat:hover{transform:translateY(-3px);border-color:rgba(88,225,208,.4);box-shadow:var(--shadow)}
+.cat .ic{width:38px;height:38px;border-radius:10px;display:grid;place-items:center;font-size:16px;flex-shrink:0;background:rgba(124,140,255,.14)}
+.cat b{display:block;font-size:14.5px}
+.cat small{color:var(--sub);font-size:12px}
+
+/* ===== 卡片 ===== */
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;transition:.26s;display:flex;flex-direction:column}
+.card:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:rgba(124,140,255,.35)}
+.card .cover{height:96px;position:relative;display:flex;align-items:flex-end;padding:10px 12px;font-size:12px;color:#fff;font-weight:700;text-shadow:0 2px 6px rgba(0,0,0,.55)}
+.card .cover .rk{position:absolute;top:8px;left:10px;background:rgba(0,0,0,.45);border-radius:6px;padding:1px 8px;font-size:11.5px}
+.card .body{padding:13px 14px 15px;flex:1;display:flex;flex-direction:column;gap:8px}
+.card h3{font-size:15.5px;line-height:1.45}
+.card p{font-size:13px;color:var(--sub);line-height:1.65;flex:1}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tags span{font-size:11.5px;color:var(--acc);background:rgba(88,225,208,.09);border:1px solid rgba(88,225,208,.2);padding:2px 9px;border-radius:20px}
+.tags span.b{color:var(--acc2);background:rgba(255,111,181,.09);border-color:rgba(255,111,181,.22)}
+.meta{display:flex;justify-content:space-between;align-items:center;font-size:12px;color:#7884a3;border-top:1px dashed var(--line);padding-top:9px}
+.meta .score{color:var(--warn);font-weight:700}
+
+/* ===== 更新列表 ===== */
+.upd{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+.upd-row{display:flex;gap:14px;align-items:center;padding:13px 16px;border-bottom:1px solid var(--line);transition:.2s;font-size:13.5px}
+.upd-row:last-child{border-bottom:0}
+.upd-row:hover{background:rgba(255,255,255,.035)}
+.upd-row .n{width:26px;height:26px;border-radius:8px;background:rgba(124,140,255,.16);color:var(--acc3);display:grid;place-items:center;font-size:12px;font-weight:700;flex-shrink:0}
+.upd-row .t{font-weight:600;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:220px}
+.upd-row .d{color:var(--sub);flex:1;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.upd-row .tm{color:#6b7794;font-size:12px;white-space:nowrap}
+
+/* ===== 正文 ===== */
+.article{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:32px 34px}
+.article h2{font-size:22px;margin-bottom:16px;padding-left:14px;position:relative}
+.article h2::before{content:"";position:absolute;left:0;top:50%;transform:translateY(-50%);width:5px;height:19px;border-radius:3px;background:linear-gradient(180deg,var(--acc2),var(--acc3))}
+.article h3{font-size:16.5px;margin:24px 0 10px;color:var(--acc)}
+.article p{font-size:14.5px;color:#c3cbe2;margin-bottom:13px;line-height:1.9}
+.article p strong{color:var(--txt)}
+.article ul{margin:0 0 14px 20px;color:#c3cbe2;font-size:14.5px}
+.article li{margin-bottom:7px}
+.hl{color:var(--acc);font-weight:600}
+
+/* ===== FAQ ===== */
+.faq{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.faq-item{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:17px 18px;transition:.24s}
+.faq-item:hover{border-color:rgba(88,225,208,.35)}
+.faq-item b{display:block;font-size:14.5px;margin-bottom:8px;color:var(--txt);line-height:1.5}
+.faq-item b::before{content:"Q ";color:var(--acc2);font-weight:900}
+.faq-item p{font-size:13.2px;color:var(--sub);line-height:1.8}
+
+/* ===== 评论 ===== */
+.cms{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.cm{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:15px 17px}
+.cm .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.cm .u{font-size:13.5px;font-weight:700;color:var(--acc3)}
+.cm .tm{font-size:12px;color:#6b7794}
+.cm p{font-size:13.3px;color:#b9c2da;line-height:1.78}
+.cm .like{font-size:12px;color:#6b7794;margin-top:8px}
+
+/* ===== 资讯 ===== */
+.news{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.nw{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px;transition:.24s;display:flex;flex-direction:column;gap:9px}
+.nw:hover{transform:translateY(-3px);border-color:rgba(255,111,181,.35)}
+.nw .dt{font-size:12px;color:var(--acc2)}
+.nw h3{font-size:15px;line-height:1.5}
+.nw p{font-size:13px;color:var(--sub);line-height:1.7;flex:1}
+
+/* ===== 数据看板 ===== */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.st{background:linear-gradient(160deg,var(--card2),var(--card));border:1px solid var(--line);border-radius:12px;padding:20px 18px;text-align:center}
+.st b{display:block;font-size:26px;background:linear-gradient(90deg,var(--acc),var(--acc3));-webkit-background-clip:text;background-clip:text;color:transparent;font-weight:800}
+.st span{font-size:12.5px;color:var(--sub)}
+
+/* ===== 订阅 ===== */
+.sub-box{background:linear-gradient(135deg,rgba(124,140,255,.16),rgba(88,225,208,.08));border:1px solid rgba(124,140,255,.3);border-radius:18px;padding:32px;text-align:center}
+.sub-box h2{font-size:22px;margin-bottom:10px}
+.sub-box p{color:var(--sub);font-size:14px;margin-bottom:18px}
+.sub-box form{display:flex;gap:8px;max-width:440px;margin:0 auto}
+.sub-box input{flex:1;background:rgba(0,0,0,.25);border:1px solid var(--line);border-radius:10px;padding:11px 14px;color:var(--txt);outline:0;font-family:inherit;font-size:14px}
+.sub-box button{background:linear-gradient(135deg,var(--acc),var(--acc3));border:0;color:#0b1020;font-weight:700;padding:11px 24px;border-radius:10px;cursor:pointer;font-family:inherit}
+
+/* ===== 页脚 ===== */
+footer{border-top:1px solid var(--line);margin-top:52px;padding:34px 0 26px;background:rgba(0,0,0,.18)}
+.foot{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:28px}
+.foot h4{font-size:14px;margin-bottom:12px;color:var(--txt)}
+.foot a,.foot p{display:block;font-size:13px;color:var(--sub);margin-bottom:8px;line-height:1.7}
+.foot a:hover{color:var(--acc)}
+.copy{margin-top:26px;padding-top:18px;border-top:1px solid var(--line);font-size:12.5px;color:#6b7794;text-align:center;line-height:1.9}
+
+@media(max-width:980px){
+  .hero-grid{grid-template-columns:1fr}
+  .cats{grid-template-columns:repeat(2,1fr)}
+  .grid-3,.news{grid-template-columns:repeat(2,1fr)}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .foot{grid-template-columns:1fr 1fr}
+}
+@media(max-width:640px){
+  .hero h1{font-size:27px}
+  .grid-3,.grid-2,.news,.faq,.cms{grid-template-columns:1fr}
+  .article{padding:22px 18px}
+  .nav-links{display:none}
+  .upd-row .d{display:none}
+  .searchbox button{padding:10px 14px}
+  .stats{grid-template-columns:1fr 1fr}
+  .sub-box form{flex-direction:column}
+}
+</style>
+</head>
+<body>
+
+<!-- 导航 -->
+<header class="nav">
+  <div class="nav-in">
+    <a href="/#top" class="logo"><span class="mark">91</span>次元<em>浏览器</em></a>
+    <nav class="nav-links">
+      <a href="/#hot">热门推荐</a>
+      <a href="/#update">最新更新</a>
+      <a href="/#cats">分类导航</a>
+      <a href="/#deep">深度解析</a>
+      <a href="/#guide">体验指南</a>
+      <a href="/#faq">常见问题</a>
+      <a href="/#comments">用户评论</a>
+      <a href="/#news">资讯动态</a>
+    </nav>
+    <a href="/#hot" class="nav-cta">开始浏览</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- 首屏 -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <h1><span>91次元浏览器</span> 二次元内容聚合与追番浏览专题</h1>
+        <p class="lead">一个围绕动漫资源浏览、追番进度与次元内容导航的专题落地页，把零散入口整理成可读、可查、可收藏的内容地图。</p>
+        <p class="lead">覆盖新番速览、经典补番、分类筛选与移动端浏览体验，帮你在91次元浏览器里更快找到下一部要看的作品。</p>
+        <div class="badges">
+          <i>新番速览</i><i>补番清单</i><i>分类筛选</i><i>追更提醒</i><i>移动端适配</i>
+        </div>
+        <form class="searchbox" onsubmit="return false;">
+          <input type="text" placeholder="搜索番剧名、题材、年份或关键词，例如：异世界 / 2026年新番">
+          <button type="submit">搜索</button>
+        </form>
+        <div class="hero-btns">
+          <a href="/#hot">热门推荐</a>
+          <a href="/#update">今日更新</a>
+          <a href="/#cats">题材分类</a>
+          <a href="/#deep">深度解析</a>
+          <a href="/#guide">使用指南</a>
+          <a href="/#faq">常见问题</a>
+          <a href="/#news">资讯动态</a>
+          <a href="/#comments">用户评论</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="poster-stack">
+          <div class="poster">异世界新番合集</div>
+          <div class="poster">热血战斗专区</div>
+          <div class="poster">治愈日常精选</div>
+          <div class="poster">经典补番清单</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 内容简介 -->
+  <section class="sec" id="intro">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>91次元浏览器是什么：内容定位与浏览价值</h2>
+        <span class="tip">面向二次元内容消费者的入口说明</span>
+      </div>
+      <div class="article">
+        <p><strong>91次元浏览器</strong>在本页中被当作一个「次元内容聚合与浏览工具」来讨论：它把分散在不同站点、不同分类下的动漫内容入口集中到一个可浏览的框架里，让用户不必反复记忆多个地址，就能按照题材、年份、更新状态去筛选想看的内容。对经常追番、补番、找短篇动画或想快速了解某部作品基本信息的用户来说，这类浏览器的核心价值并不只是「打开页面」，而是<strong>降低内容发现成本</strong>。</p>
+        <p>从搜索行为看，用户输入「91次元浏览器」时，通常带着几类明确需求：一是想知道它到底能浏览哪些类型的次元内容；二是想了解在手机或电脑上打开后的实际使用体验，包括加载速度、分类是否清晰、能否记录进度；三是想知道它与普通视频网站、动漫社区之间有什么区别；四是寻找相对稳定的入口与更新节奏。本页围绕这些真实意图组织内容，而不是简单堆砌关键词。</p>
+        <p>页面适合三类受众：第一类是追番频率较高、需要按季度整理观看计划的活跃观众；第二类是偶尔补番、更看重分类与简介的轻度用户；第三类是对二次元内容有收藏习惯、希望有一个相对集中浏览入口的用户。我们把热门推荐、最新更新、分类导航、深度解析、FAQ 与用户评论放在同一条阅读路径上，你可以先看榜单，再读解析，最后按需跳转到具体分类。</p>
+        <p>值得收藏的原因在于，次元内容的更新节奏快，季度新番、剧场版、短篇动画与专题合集的上线时间各不相同。本页会持续围绕<strong>91次元浏览器</strong>的使用场景补充内容，包括新番速览、题材偏好、移动端体验与常见疑问，帮助你把「找内容」这件事变成一件有章可循的事，而不是每次从零开始翻找。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 快捷分类 -->
+  <section class="sec" id="cats">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>分类入口：按题材与场景快速定位</h2>
+        <a href="/#hot" class="more-link">查看热门内容</a>
+      </div>
+      <div class="cats">
+        <a class="cat" href="/#hot"><span class="ic" style="background:rgba(88,225,208,.14)">异</span><span><b>异世界与转生</b><small>穿越、转生、奇幻冒险</small></span></a>
+        <a class="cat" href="/#hot"><span class="ic" style="background:rgba(255,111,181,.14)">热</span><span><b>热血战斗</b><small>少年漫改、竞技对决</small></span></a>
+        <a class="cat" href="/#hot"><span class="ic" style="background:rgba(124,140,255,.14)">治</span><span><b>治愈日常</b><small>日常、慢节奏、生活流</small></span></a>
+        <a class="cat" href="/#hot"><span class="ic" style="background:rgba(255,204,102,.14)">悬</span><span><b>悬疑推理</b><small>解谜、反转、群像</small></span></a>
+        <a class="cat" href="/#update"><span class="ic" style="background:rgba(88,225,208,.14)">新</span><span><b>本季新番</b><small>2026 秋季更新追踪</small></span></a>
+        <a class="cat" href="/#hot"><span class="ic" style="background:rgba(255,111,181,.14)">剧</span><span><b>剧场版与短片</b><small>电影、OVA、短篇合集</small></span></a>
+        <a class="cat" href="/#deep"><span class="ic" style="background:rgba(124,140,255,.14)">经</span><span><b>经典补番</b><small>高分老番、口碑佳作</small></span></a>
+        <a class="cat" href="/#guide"><span class="ic" style="background:rgba(255,204,102,.14)">设</span><span><b>播放与画质</b><small>清晰度、字幕、设备适配</small></span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 热门推荐 -->
+  <section class="sec" id="hot">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>热门内容推荐：近期值得点开的分区</h2>
+        <span class="tip">依据浏览热度与更新节奏整理，非官方排行榜</span>
+      </div>
+      <div class="grid-3">
+        <div class="card">
+          <div class="cover" style="background:linear-gradient(150deg,#2b3d8f,#5a2a78)"><span class="rk">热度 9.4</span>异世界</div>
+          <div class="body">
+            <h3>转生之后的第一百次开局</h3>
+            <p>主角每次死亡都会回到同一天，剧情用循环结构堆出信息量，适合喜欢设定流的观众。</p>
+            <div class="tags"><span>异世界</span><span>循环设定</span><span class="b">轻小说改</span></div>
+            <div class="meta"><span>更新至 第9话</span><span class="score">9.2</span></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="cover" style="background:linear-gradient(150deg,#0f5f66,#123a63)"><span class="rk">热度 9.1</span>热血</div>
+          <div class="body">
+            <h3>拳台之上的第七回合</h3>
+            <p>拳击题材新作，作画张力和比赛节奏是主要看点，回合制叙事让每集都有明确目标。</p>
+            <div class="tags"><span>热血</span><span>竞技</span><span class="b">原创动画</span></div>
+            <div class="meta"><span>更新至 第7话</span><span class="score">9.0</span></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="cover" style="background:linear-gradient(150deg,#7a2d55,#3a1f52)"><span class="rk">热度 8.9</span>治愈</div>
+          <div class="body">
+            <h3>海边小镇的慢递事务所</h3>
+            <p>以代写书信为线索的单元剧，一集一个故事，适合睡前放松或周末慢慢看。</p>
+            <div class="tags"><span>治愈</span><span>单元剧</span><span class="b">日常</span></div>
+            <div class="meta"><span>更新至 第5话</span><span class="score">8.8</span></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="cover" style="background:linear-gradient(150deg,#1b4a5e,#2d6b4f)"><span class="rk">热度 8.7</span>悬疑</div>
+          <div class="body">
+            <h3>雾港列车失踪事件</h3>
+            <p>封闭空间推理，群像角色各有秘密，前两集铺垫较多，第三集开始进入密集反转。</p>
+            <div class="tags"><span>悬疑</span><span>群像</span><span class="b">推理</span></div>
+            <div class="meta"><span>更新至 第6话</span><span class="score">8.7</span></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="cover" style="background:linear-gradient(150deg,#3a2f6e,#6b2a4d)"><span class="rk">热度 8.6</span>奇幻</div>
+          <div class="body">
+            <h3>星轨图书馆的守夜人</h3>
+            <p>魔法与书籍设定结合，美术风格偏水彩，世界观展开较慢但细节丰富。</p>
+            <div class="tags"><span>奇幻</span><span>水彩美术</span><span class="b">漫改</span></div>
+            <div class="meta"><span>更新至 第8话</span><span class="score">8.5</span></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="cover" style="background:linear-gradient(150deg,#5e3a1b,#6b4f2d)"><span class="rk">热度 8.4</span>美食</div>
+          <div class="body">
+            <h3>深夜食堂的第二张菜单</h3>
+            <p>美食与人物故事交替推进，节奏舒缓，单集信息量不大但情绪浓度高。</p>
+            <div class="tags"><span>美食</span><span>生活流</span><span class="b">续作</span></div>
+            <div class="meta"><span>更新至 第4话</span><span class="score">8.4</span></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="cover" style="background:linear-gradient(150deg,#2d4f6b,#1f3352)"><span class="rk">热度 8.3</span>科幻</div>
+          <div class="body">
+            <h3>轨道站最后一名维修员</h3>
+            <p>硬科幻外壳下的人物剧，机械设定考究，适合喜欢太空题材的观众。</p>
+            <div class="tags"><span>科幻</span><span>太空</span><span class="b">原创</span></div>
+            <div class="meta"><span>更新至 第10话</span><span class="score">8.3</span></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="cover" style="background:linear-gradient(150deg,#6b2a3d,#3d1f2e)"><span class="rk">热度 8.2</span>校园</div>
+          <div class="body">
+            <h3>天台上的星期三</h3>
+            <p>校园青春群像，轻喜剧基调，角色关系推进自然，适合下饭观看。</p>
+            <div class="tags"><span>校园</span><span>群像</span><span class="b">轻喜剧</span></div>
+            <div class="meta"><span>更新至 第11话</span><span class="score">8.2</span></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="cover" style="background:linear-gradient(150deg,#1f5e5a,#2a4a6b)"><span class="rk">热度 8.1</span>运动</div>
+          <div class="body">
+            <h3>冲刺线外的第十三人</h3>
+            <p>田径题材，训练线与比赛线交替，人物成长弧线清晰，节奏偏热血。</p>
+            <div class="tags"><span>运动</span><span>成长</span><span class="b">竞技</span></div>
+            <div class="meta"><span>更新至 第9话</span><span class="score">8.1</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 最新更新 -->
+  <section class="sec" id="update">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>最新更新与浏览动态</h2>
+        <span class="tip">数据为模拟整理，时间基准 2026 年 11 月 7 日</span>
+      </div>
+      <div class="grid-2">
+        <div class="upd">
+          <div class="upd-row"><span class="n">01</span><span class="t">转生之后的第一百次开局</span><span class="d">第 9 话已更新，循环设定进入收束阶段</span><span class="tm">11-07</span></div>
+          <div class="upd-row"><span class="n">02</span><span class="t">拳台之上的第七回合</span><span class="d">第 7 话上线，主角首次挑战卫冕选手</span><span class="tm">11-07</span></div>
+          <div class="upd-row"><span class="n">03</span><span class="t">海边小镇的慢递事务所</span><span class="d">第 5 话更新，单元故事转向冬季篇</span><span class="tm">11-06</span></div>
+          <div class="upd-row"><span class="n">04</span><span class="t">雾港列车失踪事件</span><span class="d">第 6 话已更，关键线索人物登场</span><span class="tm">11-06</span></div>
+          <div class="upd-row"><span class="n">05</span><span class="t">星轨图书馆的守夜人</span><span class="d">第 8 话更新，世界观说明补完</span><span class="tm">11-05</span></div>
+          <div class="upd-row"><span class="n">06</span><span class="t">轨道站最后一名维修员</span><span class="d">第 10 话上线，进入终章前铺垫</span><span class="tm">11-05</span></div>
+        </div>
+        <div class="upd">
+          <div class="upd-row"><span class="n">07</span><span class="t">天台上的星期三</span><span class="d">第 11 话更新，文化祭支线开启</span><span class="tm">11-04</span></div>
+          <div class="upd-row"><span class="n">08</span><span class="t">冲刺线外的第十三人</span><span class="d">第 9 话已更，区域预选赛进入后半程</span><span class="tm">11-04</span></div>
+          <div class="upd-row"><span class="n">09</span><span class="t">深夜食堂的第二张菜单</span><span class="d">第 4 话上线，冬季限定菜单特辑</span><span class="tm">11-03</span></div>
+          <div class="upd-row"><span class="n">10</span><span class="t">经典补番专题</span><span class="d">专题页更新 12 部高口碑老番索引</span><span class="tm">11-03</span></div>
+          <div class="upd-row"><span class="n">11</span><span class="t">剧场版速览</span><span class="d">新增 3 部年内剧场版条目与简介</span><span class="tm">11-02</span></div>
+          <div class="upd-row"><span class="n">12</span><span class="t">分类导航优化</span><span class="d">新增「短片合集」与「OVA」两个入口</span><span class="tm">11-01</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 深度解析 -->
+  <section class="sec" id="deep">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>深度解析：91次元浏览器的内容消费逻辑</h2>
+        <span class="tip">从题材、体验与人群三个角度拆解</span>
+      </div>
+      <div class="article">
+        <h3>一、次元内容为什么需要一个「浏览器」形态</h3>
+        <p>二次元内容的分布天然是碎片化的：新番按季度上线，剧场版按档期发布，短片与 OVA 又常常依附于特定企划或活动。普通视频站的首页推荐更偏向大众流量，很难满足「我想找某类题材」「我想按年份补番」「我想看更新到第几话」这类具体需求。于是，<strong>91次元浏览器</strong>这类以分类和浏览为核心的产品形态就有了存在空间——它不一定要自己生产内容，但需要把内容组织得足够清楚。</p>
+        <p>从这个角度看，评价一个次元浏览器是否好用，关键不在于页面有多花哨，而在于三件事：<span class="hl">分类维度是否够用</span>（题材、年份、更新状态、篇幅）、<span class="hl">信息密度是否合理</span>（标题、简介、标签、进度一眼能看清）、<span class="hl">跳转路径是否够短</span>（从首页到具体条目不超过两三次点击）。本页后续的解析也围绕这三点展开。</p>
+
+        <h3>二、题材与内容吸引点：不同观众的关注重心不同</h3>
+        <p>追番人群的偏好差异非常大。偏设定流的观众更在意世界观是否自洽、伏笔是否回收；偏情绪流的观众更看重角色关系与日常互动；偏视觉的观众会先看作画、分镜和色彩；偏剧情的观众则会关注节奏与反转密度。一个合格的次元内容浏览入口，应该允许用户用标签把这些偏好显性化，比如「异世界」「群像」「单元剧」「原创」「漫改」等，而不是只给一个笼统的「热门」。</p>
+        <p>在本页的热门推荐区，我们刻意把标签做得更细：同属奇幻题材，「水彩美术」和「轻小说改」指向的是完全不同的观看预期。用户在<strong>91次元浏览器</strong>里浏览时，如果能先通过标签缩小范围，再点进具体条目看简介，决策效率会明显提升。这也是内容聚合类产品相比单站推荐的优势所在——它更接近「逛」而不是「被喂」。</p>
+
+        <h3>三、人物与角色分析：群像作品的分水岭</h3>
+        <p>近年口碑较好的作品里，群像结构占比明显上升。群像的好处是能撑起更长的叙事线，坏处是容易在前几集信息过载。判断一部群像作品是否值得追，可以看两个信号：一是主要角色是否在各自的行为逻辑里做选择，而不是为了推动剧情强行行动；二是配角是否有独立的目标，而不是只为主角服务。浏览时如果简介里强调「群像」「多线叙事」，建议先看前两集再决定是否继续。</p>
+        <p>角色分析也是评论区最容易产生分歧的地方。本页用户评论模块保留了不同立场的讨论，有人喜欢主角的成长线，也有人觉得配角更出彩。这种分歧本身是内容消费的一部分，不必强求统一结论。</p>
+
+        <h3>四、视听表现与节奏：决定「能不能看下去」</h3>
+        <p>作画和配乐是二次元内容的两条硬指标，但对普通观众来说，更直观的感受其实是节奏。一集 24 分钟，如果前 6 分钟还在铺设定，很多人会直接退出；反过来，节奏过快的作品又容易让人觉得「信息没消化完就过去了」。在<strong>91次元浏览器</strong>的浏览场景里，用户往往先看更新进度，再看简介，最后才决定是否点开，因此简介里的节奏提示（如「慢热」「前三集铺垫」「单元剧」）非常关键。</p>
+        <p>画质与字幕同样是体验的一部分。移动端浏览时，清晰度自适应是否流畅、字幕是否可调、横竖屏切换是否稳定，都会影响观感。这部分内容我们在「体验指南」里单独展开，此处不赘述。</p>
+
+        <h3>五、适合人群与同类比较</h3>
+        <p>如果你属于「每季度固定追 5 部以上」的活跃观众，分类和更新追踪会比推荐算法更重要；如果你属于「偶尔补番」的轻度用户，简介和口碑比更新速度更重要；如果你只是「想找点东西下饭」，那么单元剧和日常向作品会是更稳妥的选择。<strong>91次元浏览器</strong>的定位更接近前者与中者之间的交集：既有明确的分类结构，也保留了足够的内容简介，方便快速判断。</p>
+        <p>与普通视频平台相比，它的优势是分类细、入口集中；劣势是内容更新依赖上游，时效性不一定比官方平台更快。理解这一点，才能更合理地使用这类浏览工具，而不是把它当成「万能片库」。搜索「91次元浏览器」的用户，多数其实是在寻找一个更高效的浏览路径，本页希望提供的正是这条路径的说明。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 数据看板 -->
+  <section class="sec" id="data">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>浏览数据面板</h2>
+        <span class="tip">模拟统计，用于说明内容结构</span>
+      </div>
+      <div class="stats">
+        <div class="st"><b>1,280+</b><span>收录条目（模拟）</span></div>
+        <div class="st"><b>36</b><span>细分题材分类</span></div>
+        <div class="st"><b>每日</b><span>更新追踪频率</span></div>
+        <div class="st"><b>3 端</b><span>手机 / 平板 / 桌面</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 体验指南 -->
+  <section class="sec" id="guide">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>体验指南：如何更高效地使用次元浏览器</h2>
+        <a href="/#faq" class="more-link">查看常见问题</a>
+      </div>
+      <div class="grid-2">
+        <div class="card">
+          <div class="body">
+            <h3>先定目标，再选分类</h3>
+            <p>如果你已经知道想看什么题材，直接从分类入口进入；如果只是随便逛逛，建议先看热门推荐，再顺着标签找到相近作品。避免一上来就在搜索框里反复试错。</p>
+            <div class="tags"><span>分类优先</span><span>标签联动</span></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="body">
+            <h3>用更新状态管理追番节奏</h3>
+            <p>正在连载的作品适合按周追，已完结的作品适合集中补。浏览时优先看「更新至第几话」和「是否完结」两个信息，可以减少追到一半断更的挫败感。</p>
+            <div class="tags"><span>更新追踪</span><span>完结标记</span></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="body">
+            <h3>移动端浏览的三个小技巧</h3>
+            <p>横屏看简介更完整，竖屏刷列表更顺手；把常看的分类页加入书签；遇到加载慢时先切换清晰度再重试，通常比反复刷新更有效。</p>
+            <div class="tags"><span>移动适配</span><span>书签管理</span></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="body">
+            <h3>把相关推荐当成「第二入口」</h3>
+            <p>看完一部作品后，相关推荐往往比首页推荐更贴近你的口味。建议每次至少点开一个相关条目，逐步把浏览路径从「搜索驱动」变成「兴趣驱动」。</p>
+            <div class="tags"><span>相关推荐</span><span>兴趣路径</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="sec" id="faq">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>常见问题：关于91次元浏览器的疑问</h2>
+        <span class="tip">整理自搜索意图与用户反馈</span>
+      </div>
+      <div class="faq">
+        <div class="faq-item">
+          <b>91次元浏览器主要能浏览哪些类型的次元内容？</b>
+          <p>从内容结构看，主要覆盖连载动画、剧场版、OVA 与短片合集几类，题材上以异世界、热血、治愈、悬疑、科幻、校园、运动、美食等常见分区为主。它的定位是内容聚合与分类浏览，而不是单一作品站，因此适合按题材或更新状态做横向查找。</p>
+        </div>
+        <div class="faq-item">
+          <b>第一次使用，应该先看哪个板块？</b>
+          <p>建议先看热门推荐建立整体印象，再进入分类入口按兴趣缩小范围。如果你已经有明确目标，直接搜索或从分类进入会更快。深度解析适合在犹豫「这部要不要追」时阅读，FAQ 则适合解决具体操作疑问。</p>
+        </div>
+        <div class="faq-item">
+          <b>它和普通视频网站的区别在哪里？</b>
+          <p>普通视频网站以播放和推荐算法为核心，首页更偏向大众流量；次元浏览器的核心是分类与索引，信息密度更高，适合「带着目的找内容」。两者并不冲突，前者适合直接看，后者适合先筛选再决定看什么。</p>
+        </div>
+        <div class="faq-item">
+          <b>更新速度能跟上新番节奏吗？</b>
+          <p>更新速度取决于上游内容源，通常会在新一集上线后的较短时间内同步条目信息。建议关注「最新更新」板块，并按周查看一次，比每天反复刷新更高效。遇到延迟时，可以先看简介与评论判断是否值得等待。</p>
+        </div>
+        <div class="faq-item">
+          <b>移动端浏览体验如何，有没有适配问题？</b>
+          <p>页面本身采用响应式布局，手机端会折叠导航、简化列表信息，保证标题与更新状态可读。复杂装饰在小屏上会减少，加载压力更低。如果遇到列表过长，建议使用分类筛选而不是一直下滑。</p>
+        </div>
+        <div class="faq-item">
+          <b>有没有类似的内容入口可以对比参考？</b>
+          <p>可以从三个维度对比：分类维度是否够细、简介信息是否完整、跳转路径是否够短。不同工具各有侧重，有的强在社区讨论，有的强在更新速度。建议同时保留两到三个入口，按场景切换使用，而不是只依赖单一来源。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 评论 -->
+  <section class="sec" id="comments">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>用户评论：真实语气的追番讨论</h2>
+        <span class="tip">近 30 天内的模拟评论，观点不代表本站立场</span>
+      </div>
+      <div class="cms">
+        <div class="cm"><div class="top"><span class="u">深夜补番人</span><span class="tm">11-06</span></div><p>用91次元浏览器主要就是图分类清楚，之前找治愈系要翻好几个站，现在按标签筛一下就能列出来，省事不少。</p><div class="like">赞同 32</div></div>
+        <div class="cm"><div class="top"><span class="u">循环设定爱好者</span><span class="tm">11-06</span></div><p>《转生之后的第一百次开局》前两集有点绕，但第三集开始回收伏笔，节奏一下就对上了，建议别在第一集弃。</p><div class="like">赞同 27</div></div>
+        <div class="cm"><div class="top"><span class="u">拳台边的观众</span><span class="tm">11-05</span></div><p>拳击那部作画确实稳，第七回合的分镜很有压迫感。就是文戏略少，希望后面别只顾打。</p><div class="like">赞同 19</div></div>
+        <div class="cm"><div class="top"><span class="u">慢递事务所常客</span><span class="tm">11-05</span></div><p>单元剧爱好者狂喜，一集一个故事，适合睡前看。缺点是主线推进太慢，急性子可能受不了。</p><div class="like">赞同 24</div></div>
+        <div class="cm"><div class="top"><span class="u">雾港推理社</span><span class="tm">11-04</span></div><p>悬疑那部第三集之后的密度明显上来了，前两集确实劝退，但熬过去就值。群像写得比预期好。</p><div class="like">赞同 15</div></div>
+        <div class="cm"><div class="top"><span class="u">水彩控</span><span class="tm">11-04</span></div><p>星轨图书馆的美术真的好看，截图能当壁纸。剧情推进偏慢，但氛围感拉满，属于看画面的类型。</p><div class="like">赞同 21</div></div>
+        <div class="cm"><div class="top"><span class="u">轨道站值班员</span><span class="tm">11-03</span></div><p>硬科幻那部设定很扎实，机械细节经得起看。缺点是台词信息量大，边玩手机边看容易漏。</p><div class="like">赞同 12</div></div>
+        <div class="cm"><div class="top"><span class="u">天台风大</span><span class="tm">11-03</span></div><p>校园群像那部下饭刚好，不烧脑，角色关系推进自然。适合不想动脑的时候点开。</p><div class="like">赞同 18</div></div>
+        <div class="cm"><div class="top"><span class="u">田径部编外</span><span class="tm">11-02</span></div><p>运动番的成长线写得挺踏实，训练戏不敷衍。就是比赛节奏有点拖，希望预选赛部分能紧凑些。</p><div class="like">赞同 11</div></div>
+        <div class="cm"><div class="top"><span class="u">菜单翻页人</span><span class="tm">11-02</span></div><p>深夜食堂续作保持了一贯风格，情绪浓度高。就是单集信息量不大，追起来没那么「上头」。</p><div class="like">赞同 9</div></div>
+        <div class="cm"><div class="top"><span class="u">分类强迫症</span><span class="tm">11-01</span></div><p>希望91次元浏览器的分类能再加个「按年份」筛选，补老番的时候按年份找会方便很多。</p><div class="like">赞同 14</div></div>
+        <div class="cm"><div class="top"><span class="u">只看前三集</span><span class="tm">11-01</span></div><p>个人习惯是前三集定生死，这季看下来留了四部。简介写得清楚确实能省不少试错时间。</p><div class="like">赞同 16</div></div>
+        <div class="cm"><div class="top"><span class="u">字幕党</span><span class="tm">10-31</span></div><p>手机端看的时候字幕大小能调就好了，现在默认字号在横屏下有点小。整体加载速度还行。</p><div class="like">赞同 8</div></div>
+        <div class="cm"><div class="top"><span class="u">季度追番表</span><span class="tm">10-30</span></div><p>每季都做追番表，这类浏览器的更新列表对我来说最实用，一眼能看到哪些更了、哪些还没更。</p><div class="like">赞同 20</div></div>
+        <div class="cm"><div class="top"><span class="u">不吐不快</span><span class="tm">10-29</span></div><p>有些条目简介写得太笼统，看了还是不知道讲什么。希望多写点「节奏」「适合人群」这类信息。</p><div class="like">赞同 13</div></div>
+        <div class="cm"><div class="top"><span class="u">路人甲观众</span><span class="tm">10-28</span></div><p>不算重度用户，偶尔进来逛逛。感觉热门推荐更新挺勤的，每次来都有新东西看。</p><div class="like">赞同 7</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 资讯 -->
+  <section class="sec" id="news">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>相关资讯与动态</h2>
+        <span class="tip">围绕内容类型与浏览体验整理</span>
+      </div>
+      <div class="news">
+        <div class="nw">
+          <span class="dt">2026-11-06</span>
+          <h3>本季新番进入中盘，追番节奏怎么调整</h3>
+          <p>十月新番陆续播至中段，部分作品开始收束支线。建议根据更新状态重新梳理追番表，把「可弃」和「必追」分开管理。</p>
+        </div>
+        <div class="nw">
+          <span class="dt">2026-11-05</span>
+          <h3>群像作品为何更容易出圈</h3>
+          <p>群像结构能承载更多人物弧光，也更容易在社交平台产生讨论点。本文从叙事密度与角色目标两个角度做了简单拆解。</p>
+        </div>
+        <div class="nw">
+          <span class="dt">2026-11-04</span>
+          <h3>补番清单更新：12 部高口碑老番索引</h3>
+          <p>专题页新增补番索引，覆盖悬疑、治愈、科幻等方向，适合想系统补经典作品的观众按图索骥。</p>
+        </div>
+        <div class="nw">
+          <span class="dt">2026-11-03</span>
+          <h3>移动端浏览体验优化方向观察</h3>
+          <p>清晰度自适应、字幕可调、列表信息折叠是目前移动端浏览的三个高频需求，也是次元浏览器类产品的优化重点。</p>
+        </div>
+        <div class="nw">
+          <span class="dt">2026-11-02</span>
+          <h3>剧场版与 OVA 条目整理方式说明</h3>
+          <p>剧场版和 OVA 常依附于特定企划，整理时建议单独分类，并在简介中标注与正篇的观看顺序关系。</p>
+        </div>
+        <div class="nw">
+          <span class="dt">2026-11-01</span>
+          <h3>分类导航新增两个入口</h3>
+          <p>本次调整新增「短片合集」与「OVA」入口，方便用户按篇幅长度筛选内容，减少在长列表中反复翻找的成本。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 订阅 -->
+  <section class="sec" id="sub">
+    <div class="wrap">
+      <div class="sub-box">
+        <h2>订阅更新提醒</h2>
+        <p>留下邮箱，获取91次元浏览器相关的内容更新与补番清单整理（模拟订阅入口）。</p>
+        <form onsubmit="return false;">
+          <input type="email" placeholder="请输入邮箱地址">
+          <button type="submit">订阅</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <h4>91次元浏览器专题页</h4>
+        <p>围绕次元内容聚合、分类浏览与追番体验整理的静态内容专题，帮助用户更高效地找到想看的作品。</p>
+        <p>本页为内容说明与索引页，不提供任何内容存储或播放服务。</p>
+      </div>
+      <div>
+        <h4>内容导航</h4>
+        <a href="/#hot">热门推荐</a>
+        <a href="/#update">最新更新</a>
+        <a href="/#cats">分类入口</a>
+        <a href="/#deep">深度解析</a>
+      </div>
+      <div>
+        <h4>使用帮助</h4>
+        <a href="/#guide">体验指南</a>
+        <a href="/#faq">常见问题</a>
+        <a href="/#data">数据面板</a>
+        <a href="/#comments">用户评论</a>
+      </div>
+      <div>
+        <h4>友情链接</h4>
+        <a href="/#news">资讯动态</a>
+        <a href="/#sub">订阅提醒</a>
+        <a href="/#top">返回顶部</a>
+        <a href="/#intro">内容简介</a>
+      </div>
+    </div>
+    <div class="copy">
+      © 2026 91次元浏览器内容专题 · 页面内容为编辑整理与模拟数据，仅供浏览参考<br>
+      本站不存储、不制作任何视听内容，相关条目信息以实际来源为准 · 友情链接位虚位以待
+    </div>
+  </div>
+</footer>
+
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</body>
+                             </html>
